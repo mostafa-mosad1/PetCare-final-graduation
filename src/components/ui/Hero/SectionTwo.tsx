@@ -1,12 +1,9 @@
-interface Iprops {	
-     
-}	
-function SectionTwo({}:Iprops) {
-    return (
-        <>
-            <p>SectionTwo</p>
-        </>
-    )
+function SectionTwo() {
+  return (
+    <>
+      <p>SectionTwo</p>
+    </>
+  );
 }
 
 export default SectionTwo;

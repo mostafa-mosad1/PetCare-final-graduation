@@ -1,19 +1,15 @@
-import SectionOne from "./components/ui/Hero/SectionOne"
-import SectionTwo from "./components/ui/Hero/SectionTwo"
-import { ThemeProvider } from "./components/ui/Hero/theme-provider"
-
+import { RouterProvider } from "react-router-dom";
+import { ThemeProvider } from "./components/ui/Hero/theme-provider";
+import router from "./router";
 
 function App() {
-
   return (
     <>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-    <SectionOne/>
-    <SectionTwo/>
-    </ThemeProvider>
-    
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <RouterProvider router={router}></RouterProvider>
+      </ThemeProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
