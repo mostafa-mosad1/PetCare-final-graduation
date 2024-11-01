@@ -12,12 +12,15 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
+      {/* 1 */}
       <Route path="/" element={<Layout />}>
-        <Route index element={<Login />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/about" element={<About />}></Route>
+        <Route index element={<About />}></Route>
         <Route path="/my-booking" element={<Mybooking />}></Route>
       </Route>
+
+      {/* 2 */}
+      <Route path="/login" element={<Login />}></Route>
+      <Route path="/signup" element={<Signup />}></Route>
     </Route>
   )
 );
