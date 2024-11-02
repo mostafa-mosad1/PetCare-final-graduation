@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Lottie from "lottie-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import registerAn from "../assets/Images/login.json";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -24,6 +24,7 @@ import { useSelector } from "react-redux";
 function Signup() {
   const { isloading } = useSelector((state: RootState) => state.signup);
   const dispatch = useAppDispatch();
+  const navgate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -34,7 +35,10 @@ function Signup() {
   });
   const onSubmit: SubmitHandler<IRegister> = async (data) => {
     console.log(data);
-    await dispatch(setAccount(data));
+    const res = await dispatch(setAccount(data));
+    if (res.payload.success == true) {
+      navgate("/login");
+    }
   };
   const renderRegister = formRegister.map((el, idx) => (
     <div className="flex flex-col" key={idx}>

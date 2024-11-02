@@ -1,21 +1,32 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ILoginInput } from "./../interface/index";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "@/validation/Schema";
 import { FormLogin } from "@/data";
 import InputError from "@/components/InputError";
 import Lottie from "lottie-react";
 import LoginAnimated from "../assets/Images/register.json";
+import { useAppDispatch } from "@/redux/store";
+import { SignInFuncation } from "@/redux/features/SignIn/SignInSlice";
 
 function Login() {
+  const dispatch = useAppDispatch();
+ const navgate =  useNavigate()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<ILoginInput>({ resolver: yupResolver(LoginSchema) });
-  const onSubmit: SubmitHandler<ILoginInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ILoginInput> = async (data) => {
+    console.log(data);
+    const x =  await dispatch(SignInFuncation(data));
+    if(x.payload.success == true ){
+      navgate("/")
+    }
+    console.log(x.payload);
+  };
 
   const renderLogin = FormLogin.map((el, idx) => (
     <div className="flex flex-col" key={idx}>
