@@ -12,11 +12,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "./theme-provider";
 
-function SectionOne() {
+function HeaderOne() {
   const [searchInput, setSearchInput] = useState("");
   const { setTheme } = useTheme();
   return (
-    <div className="bg-green-500 p-2 ">
+    <div className="bg-lightBG dark:bg-darkBG relative z-50 p-2 ">
       <div className="flex justify-between items-end  w-full  space-x-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -76,4 +76,4 @@ function SectionOne() {
   );
 }
 
-export default SectionOne;
+export default HeaderOne;

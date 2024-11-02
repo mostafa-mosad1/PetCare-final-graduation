@@ -1,8 +1,8 @@
 import Layout from "@/Layout/Layout";
-import About from "@/pages/About";
-import Login from "@/pages/Login";
-import Mybooking from "@/pages/Mybooking";
-import Signup from "@/pages/Signup";
+import About from "@/Pages/About";
+import Login from "@/Pages/Login";
+import Mybooking from "@/Pages/Mybooking";
+import Signup from "@/Pages/Signup";
 import {
   createBrowserRouter,
   createRoutesFromElements,

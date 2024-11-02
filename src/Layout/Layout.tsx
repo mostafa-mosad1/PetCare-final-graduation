@@ -1,12 +1,12 @@
-import SectionOne from "@/components/ui/Hero/SectionOne";
-import SectionTwo from "@/components/ui/Hero/SectionTwo";
+import HeaderOne from "@/components/Header/HeaderOne";
+import HeaderTwo from "@/components/Header/HeaderTwo";
 import { Outlet } from "react-router-dom";
 
 function Layout() {
   return (
     <div>
-      <SectionOne />
-      <SectionTwo />
+      <HeaderOne />
+      <HeaderTwo />
       <Outlet />
     </div>
   );
