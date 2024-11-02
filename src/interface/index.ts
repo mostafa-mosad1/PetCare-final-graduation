@@ -28,3 +28,31 @@ export interface IRegister {
   c_password: string;
   type: string;
 }
+
+export interface IErrorResponse {
+  error: {
+    // details?: {
+    //   errors: {
+    //     message: string;
+    //   }[];
+    // };
+    message?: string;
+  };
+}
+
+export interface IFormLogin {
+  name: string;
+  type: string;
+  id: keyof ILoginInput ;
+  placeholder: string;
+  validation: {
+    required?: boolean;
+    minLength?: number;
+    pattern?: RegExp;
+  };
+}
+export interface ILoginInput {
+  email: string;
+  password: string;
+  
+}
