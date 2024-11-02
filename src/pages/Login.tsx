@@ -38,7 +38,7 @@ function Login() {
     <>
       <div className="md:h-screen w-full flex items-center justify-center bg-[#269a41da]">
         <div className="md:rounded-[2.5rem] m-2 md:m-0 rounded-md bg-[#E2EDFF] flex md:flex-row flex-col md:justify-between items-center md:p-10 p-6 container ">
-          <div className="flex order-2    ">
+          <div className="flex w-full order-2    ">
             <div className=" ">
               <Lottie animationData={LoginAnimated} />
             </div>
