@@ -3,25 +3,16 @@ module.exports = {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: "1rem",
-          sm: "4rem",
-          lg: "4rem",
-          xl: "5rem",
-          "2xl": "6rem",
-        },
-      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        lightBG: "#2764ab",
-        darkBG: "#112D4E",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
