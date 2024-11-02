@@ -28,3 +28,13 @@ export interface IRegister {
   c_password: string;
   type: string;
 }
+export interface IErrorResponse {
+  error: {
+    // details?: {
+    //   errors: {
+    //     message: string;
+    //   }[];
+    // };
+    message?: string;
+  };
+}
