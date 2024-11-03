@@ -1,10 +1,6 @@
 import Cookies from "@/Cookies";
 import { IErrorResponse, ILoginInput } from "@/interface";
-import {
-  createAsyncThunk,
-  createSlice,
-  isRejectedWithValue,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
 import toast from "react-hot-toast";
 
@@ -15,9 +11,13 @@ const initialState = {
 
 export const SignInFuncation = createAsyncThunk(
   "SignInFuncation/SignIn",
-  async (data: ILoginInput) => {
+  async (data: ILoginInput, thunkApi) => {
+    const { rejectWithValue } = thunkApi;
     try {
-      const response = await axios.post(`http://127.0.0.1:8000/api/login`, data);
+      const response = await axios.post(
+        `http://127.0.0.1:8000/api/login`,
+        data
+      );
       if (response.status === 200) {
         toast.success("Successfully", {
           position: "bottom-center",
@@ -28,24 +28,28 @@ export const SignInFuncation = createAsyncThunk(
             width: "fit-content",
           },
         });
-        Cookies.set("token",response.data.token);
-        Cookies.set("type",response.data.user.type);
+        const date = new Date();
+        const DAYS = 3;
+        const EXPIRE_IN = 1000 * 60 * 60 * 24 * DAYS;
+        date.setTime(date.getTime() + EXPIRE_IN);
+        const options = { path: "/", expires: date };
+        Cookies.set("token", response.data.token, options);
+        Cookies.set("type", response.data.user.type, options);
       }
       console.log(response);
       return response.data;
-     
     } catch (error) {
       console.log(error);
       const errorobj = error as AxiosError<IErrorResponse>;
       const errorMessages = errorobj.response?.data.error;
       if (errorMessages) {
         const allErrors = Object.values(errorMessages).flat().join(", "); // دمج الأخطاء
-        console.log(allErrors)
+        console.log(allErrors);
         toast.error(allErrors, {
           position: "bottom-center",
           duration: 1500,
         });
-        return isRejectedWithValue(allErrors);
+        return rejectWithValue(allErrors);
       }
     }
   }

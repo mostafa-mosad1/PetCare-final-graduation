@@ -65,7 +65,7 @@ function Signup() {
             <h1 className="text-3xl font-bold">Sign up</h1>
             <p className="text-lg font-normal">
               Always Have Account ?{" "}
-              <Link to={"/login"} className="underline text-blue-500">
+              <Link to={"/login"} className="underline text-[#269a41da]">
                 Login Here
               </Link>
             </p>

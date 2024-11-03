@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ILoginInput } from "./../interface/index";
 import { Button } from "@/components/ui/button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "@/validation/Schema";
 import { FormLogin } from "@/data";
@@ -13,7 +13,6 @@ import { SignInFuncation } from "@/redux/features/SignIn/SignInSlice";
 
 function Login() {
   const dispatch = useAppDispatch();
- const navgate =  useNavigate()
   const {
     register,
     handleSubmit,
@@ -21,9 +20,9 @@ function Login() {
   } = useForm<ILoginInput>({ resolver: yupResolver(LoginSchema) });
   const onSubmit: SubmitHandler<ILoginInput> = async (data) => {
     console.log(data);
-    const x =  await dispatch(SignInFuncation(data));
-    if(x.payload.success == true ){
-      navgate("/")
+    const x = await dispatch(SignInFuncation(data));
+    if (x.payload.success == true) {
+      location.replace("/");
     }
     console.log(x.payload);
   };
@@ -67,7 +66,7 @@ function Login() {
                 Sign In
               </Button>
             </form>
-            <p className=" text-2xl font-bold ">
+            <p className=" text-xl font-bold ">
               Don't have account?{" "}
               <Link className="text-green-500 underline" to={"/signup"}>
                 Sign up

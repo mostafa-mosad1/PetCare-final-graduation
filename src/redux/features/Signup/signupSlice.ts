@@ -20,9 +20,7 @@ export const setAccount = createAsyncThunk(
   async (data: IRegister, thunkApi) => {
     const { rejectWithValue } = thunkApi;
     try {
-      const res = await axios.post(
-        `http://127.0.0.1:8000/api/register?email=${data.email}&password=${data.password}&firstname=${data.firstname}&lastname=${data.lastname}&username=${data.username}&contact_number=${data.contact_number}&address=${data.address}&type=${data.type}&c_password=${data.password}`
-      );
+      const res = await axios.post(`http://127.0.0.1:8000/api/register`, data);
       console.log(res);
       if (res.status === 200) {
         toast.success("You will navgite to Login page!", {
