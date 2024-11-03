@@ -19,7 +19,7 @@ function Categories() {
     <>
       <p>Categories Categories Categories</p>
       {data?.map((element:ICategories)=><Button key={element.id} onClick={()=>{
-        navgate(`/Subcategories/${element.id}`)
+        navgate(`/categories/Subcategories/${element.id}`)
       }}>{element.name}</Button>)}
     </>
   );

@@ -29,7 +29,7 @@ const router = createBrowserRouter(
         <Route path="/doctor" element={<Doctor />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
         <Route path="/categories" element={<Categories />}></Route>
-        <Route path="/Subcategories/:id" element={<Subcategories />}></Route>
+        <Route path="/categories/Subcategories/:id" element={<Subcategories />}></Route>
         <Route path="/services" element={<Services />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
