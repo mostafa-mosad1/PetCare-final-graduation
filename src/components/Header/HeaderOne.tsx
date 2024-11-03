@@ -16,7 +16,7 @@ function HeaderOne() {
   const [searchInput, setSearchInput] = useState("");
   const { setTheme } = useTheme();
   return (
-    <div className="bg-lightBG dark:bg-darkBG relative z-50 p-2 ">
+    <div className="bg-[#112D4E] dark:bg-darkBG relative z-50 p-2 ">
       <div className="flex justify-between items-end  w-full  space-x-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

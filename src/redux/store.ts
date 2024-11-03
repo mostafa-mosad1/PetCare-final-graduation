@@ -1,9 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import signupReducer from "./features/Signup/signupSlice";
+import { CategoriesReducer } from "./features/Categories.ts/CategoriesSlice";
+import { SignInReducer } from "./features/SignIn/SignInSlice";
+import { SubCategoriesReducer } from "./features/SubCategories/SubcategoriesSlice";
 export const store = configureStore({
   reducer: {
     signup: signupReducer,
+    signIn: SignInReducer,
+    Categories:CategoriesReducer,
+    SubCategories:SubCategoriesReducer,
   },
 });
 

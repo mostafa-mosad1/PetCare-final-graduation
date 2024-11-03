@@ -43,7 +43,7 @@ export interface IErrorResponse {
 export interface IFormLogin {
   name: string;
   type: string;
-  id: keyof ILoginInput ;
+  id: keyof ILoginInput;
   placeholder: string;
   validation: {
     required?: boolean;
@@ -54,5 +54,16 @@ export interface IFormLogin {
 export interface ILoginInput {
   email: string;
   password: string;
-  
+}
+export interface ICategories {
+  id: number;
+  img: string;
+  name: string;
+}
+export interface ISubCategories {
+  id: number;
+  category_id: number;
+  name: string;
+  img: string;
+  description: string
 }
