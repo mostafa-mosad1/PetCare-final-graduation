@@ -7,7 +7,7 @@ function HeaderTwo() {
 
   const [showMenu, setShoweMenu] = useState(false);
   return (
-    <div className="flex items-center justify-between text-sm py-2 mb-5 border-b border-b-gray-400 ">
+    <div className="flex container items-center justify-between text-sm py-2 mb-5 border-b border-b-gray-400 ">
       <img
         onClick={() => navigate("/")}
         className="w-20 cursor-pointer"
@@ -24,7 +24,7 @@ function HeaderTwo() {
           <li className="py-1 text-lg px-2 ">SHOP</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
-        <NavLink to={"/category"}>
+        <NavLink to={"/categories"}>
           <li className="py-1 text-lg px-2 ">Category</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
@@ -71,7 +71,7 @@ function HeaderTwo() {
             <NavLink onClick={() => setShoweMenu(false)} to="/shop">
               <p className="px-4 py-2 rounded inline-block">SHOP</p>
             </NavLink>
-            <NavLink onClick={() => setShoweMenu(false)} to="/category">
+            <NavLink onClick={() => setShoweMenu(false)} to="/categories">
               <p className="px-4 py-2 rounded inline-block">Category</p>
             </NavLink>
             <NavLink onClick={() => setShoweMenu(false)} to="/doctor">
