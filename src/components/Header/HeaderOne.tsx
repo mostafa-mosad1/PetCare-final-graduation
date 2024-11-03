@@ -1,6 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { BellRing, LogOut, Search, ShoppingCart, Syringe } from "lucide-react";
+import {
+  BellRing,
+  BriefcaseBusiness,
+  LogOut,
+  Plus,
+  Search,
+  ShoppingCart,
+  Syringe,
+} from "lucide-react";
 import { useState } from "react";
 import { Moon, Sun } from "lucide-react";
 
@@ -11,13 +19,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "./theme-provider";
+import Cookies from "@/Cookies";
 
 function HeaderOne() {
+  const typeNav = Cookies.get("type");
   const [searchInput, setSearchInput] = useState("");
   const { setTheme } = useTheme();
   return (
+<<<<<<< HEAD
     <div className="bg-[#112D4E] dark:bg-darkBG relative z-50 p-2 ">
       <div className="flex justify-between items-end  w-full  space-x-2">
+=======
+    <div className="bg-mains relative z-50 p-2 ">
+      <div className="flex justify-between    ">
+>>>>>>> 8fa69a4cfd600e07e29fa1589f5e913e704085be
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon">
@@ -45,7 +60,7 @@ function HeaderOne() {
           }}
           action=""
         >
-          <div className="flex space-x-1 bg-background  overflow-hidden rounded-full">
+          <div className="flex space-x-1 bg-background  border overflow-hidden rounded-full">
             <Search className="m-2 " />
             <Input
               onChange={(e) => {
@@ -58,7 +73,25 @@ function HeaderOne() {
           </div>
         </form>
         <div className="flex gap-4">
-          <Button className="bg-background text-foreground">
+          {typeNav === "Vet" && (
+            <Button className="bg-background text-foreground ">
+              <Syringe />
+              VET Booking
+            </Button>
+          )}
+          {typeNav === "Trader" && (
+            <>
+              <Button className="bg-background text-foreground ">
+                <BriefcaseBusiness />
+                My Products
+              </Button>
+              <Button className="bg-background text-foreground ">
+                <Plus />
+                Add Product
+              </Button>
+            </>
+          )}
+          <Button className="bg-background text-foreground ">
             <Syringe /> My Booking
           </Button>
           <Button className="bg-background text-foreground">
@@ -68,7 +101,7 @@ function HeaderOne() {
             <BellRing /> Notification
           </Button>
           <Button className="bg-background text-foreground">
-            <LogOut /> LOG
+            <LogOut /> LOGOUT
           </Button>
         </div>
       </div>
