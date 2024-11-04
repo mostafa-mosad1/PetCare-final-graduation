@@ -1,4 +1,4 @@
-import { IFormLogin, IFormRegister } from "@/interface";
+import { IFormAppointments, IFormLogin, IFormRegister } from "@/interface";
 
 export const formRegister: IFormRegister[] = [
   {
@@ -83,9 +83,7 @@ export const formRegister: IFormRegister[] = [
   },
 ];
 
-
-
-export const FormLogin :IFormLogin[] = [
+export const FormLogin: IFormLogin[] = [
   {
     name: "Email",
     type: "email",
@@ -106,4 +104,35 @@ export const FormLogin :IFormLogin[] = [
       minLength: 5,
     },
   },
-]
+];
+
+export const FormAppointments: IFormAppointments[] = [
+  {
+    label: "Pet Name",
+    type: "text",
+    id: "pet_name",
+    placeholder: "Enter Pet Name",
+    validation: {
+      required: true,
+      minLength: 2,
+    },
+  },
+  {
+    label: "Expected Appointment Date",
+    type: "date",
+    id: "date",
+    placeholder: "",
+    validation: {
+      required: true,
+    },
+  },
+  {
+    label: " Expected Appointment Time",
+    type: "time",
+    id: "time",
+    placeholder: "",
+    validation: {
+      required: true,
+    },
+  },
+];

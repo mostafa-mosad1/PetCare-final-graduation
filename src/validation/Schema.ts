@@ -42,6 +42,15 @@ export const schemaRegister = yup.object({
 export const LoginSchema = yup
   .object({
     email: yup.string().required("Email is a required field"),
-    password: yup.string().required().min(6,"min character is 6"),
+    password: yup.string().required().min(6, "min character is 6"),
   })
   .required();
+
+export const AppointmentsSchema = yup.object({
+  pet_name: yup
+    .string()
+    .required("Name Of Pet is Required")
+    .min(2, "Name Should be at least 2 Character"),
+  date: yup.string().required("Date is Required"),
+  time: yup.string().required("Time is Required"),
+});

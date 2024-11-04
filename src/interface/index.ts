@@ -76,8 +76,25 @@ export interface IVets {
   address: string;
   email: string;
   email_verified_at: string;
-  type:string;
+  type: string;
   img: string;
   created_at: string;
   updated_at: string;
+}
+
+export interface IFormAppointments {
+  label: string;
+  type: string;
+  id: "pet_name" | "date" | "time";
+  placeholder: string;
+  validation: {
+    required?: boolean;
+    minLength?: number;
+  };
+}
+export interface IAppointments {
+  doctor_id?: string;
+  pet_name: string;
+  date: string;
+  time: string;
 }

@@ -2,6 +2,7 @@ import Cookies from "@/Cookies";
 import CategoreLayout from "@/Layout/CategoreLayout";
 import Layout from "@/Layout/Layout";
 import About from "@/pages/About";
+import Book from "@/pages/Book";
 import Doctor from "@/pages/Doctor";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />}></Route>
         <Route path="/doctor" element={<Doctor />}></Route>
+        <Route path="/book/:id" element={<Book />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
         <Route path="/categories" element={<CategoreLayout />}>
           <Route
