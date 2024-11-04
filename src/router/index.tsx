@@ -1,16 +1,16 @@
 import Cookies from "@/Cookies";
+import CategoreLayout from "@/Layout/CategoreLayout";
 import Layout from "@/Layout/Layout";
-import About from "@/Pages/About";
-import Categories from "@/Pages/Categories";
-import Doctor from "@/Pages/Doctor";
-import Home from "@/Pages/Home";
-import Login from "@/Pages/Login";
-import Mybooking from "@/Pages/Mybooking";
-import Profile from "@/Pages/Profile";
-import Services from "@/Pages/Services";
-import Shop from "@/Pages/Shop";
-import Signup from "@/Pages/Signup";
-import Subcategories from "@/Pages/Subcategories";
+import About from "@/pages/About";
+import Doctor from "@/pages/Doctor";
+import Home from "@/pages/Home";
+import Login from "@/pages/Login";
+import Mybooking from "@/pages/Mybooking";
+import Profile from "@/pages/Profile";
+import Services from "@/pages/Services";
+import Shop from "@/pages/Shop";
+import Signup from "@/pages/Signup";
+import Subcategories from "@/pages/Subcategories";
 
 import {
   createBrowserRouter,
@@ -28,8 +28,12 @@ const router = createBrowserRouter(
         <Route index element={<Home />}></Route>
         <Route path="/doctor" element={<Doctor />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
-        <Route path="/categories" element={<Categories />}></Route>
-        <Route path="/categories/Subcategories/:id" element={<Subcategories />}></Route>
+        <Route path="/categories" element={<CategoreLayout />}>
+          <Route
+            path="/categories/Subcategories/:id"
+            element={<Subcategories />}
+          ></Route>
+        </Route>
         <Route path="/services" element={<Services />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/profile" element={<Profile />}></Route>

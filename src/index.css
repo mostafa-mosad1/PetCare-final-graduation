@@ -63,21 +63,8 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-secondary text-foreground;
   }
-}
-.me {
-  background-image: url("./assets/log.png");
-  position: relative;
-}
-.log {
-  background-image: url("./assets/logo.png.svg");
-  position: relative;
-}
-.overlay {
-  background-color: rgba(0, 0, 0, 0.685);
-  position: absolute;
-  inset: 0;
 }
 .active {
   @apply text-white font-bold bg-[#112D4E] rounded-lg;

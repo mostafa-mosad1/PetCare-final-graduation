@@ -26,8 +26,8 @@ function HeaderOne() {
   const [searchInput, setSearchInput] = useState("");
   const { setTheme } = useTheme();
   return (
-    <div className="bg-mains  relative z-50 p-2 ">
-      <div className="flex  container justify-between    ">
+    <div className="bg-mains   relative z-20 p-2 ">
+      <div className="flex md:flex-row flex-col gap-4 items-center md:items-start  container justify-between    ">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon">
@@ -67,7 +67,7 @@ function HeaderOne() {
             />
           </div>
         </form>
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap flex-col md:flex-row">
           {typeNav === "Vet" && (
             <Button className="bg-background text-foreground ">
               <Syringe />
