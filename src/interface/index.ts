@@ -65,5 +65,19 @@ export interface ISubCategories {
   category_id: number;
   name: string;
   img: string;
-  description: string
+  description: string;
+}
+export interface IVets {
+  id: number;
+  firstname: string;
+  lastname: string;
+  username: string;
+  contact_number: string;
+  address: string;
+  email: string;
+  email_verified_at: string;
+  type:string;
+  img: string;
+  created_at: string;
+  updated_at: string;
 }
