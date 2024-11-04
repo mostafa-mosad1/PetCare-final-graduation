@@ -77,7 +77,7 @@ function BookingSlot({ doctor_id }: IProps) {
 
       <form className="my-5" onSubmit={handleSubmit(onSubmit)}>
         {renderAppointment}
-        <Button className="text-white w-full bg-mains">
+        <Button className="text-white w-full bg-mains" disabled={loading}>
           {loading ? (
             <svg
               aria-hidden="true"
