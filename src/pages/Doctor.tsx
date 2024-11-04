@@ -1,5 +1,4 @@
 import { Dot } from "lucide-react";
-import me from "../assets/log.png";
 import useGetHook from "@/Hooks/reactQuery";
 import { IVets } from "@/interface";
 
