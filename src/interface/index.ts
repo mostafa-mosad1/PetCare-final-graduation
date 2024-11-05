@@ -98,3 +98,17 @@ export interface IAppointments {
   date: string;
   time: string;
 }
+
+export interface IBookingVet {
+  id: number;
+  user_id: number;
+  doctor_id: number;
+  pet_name: string;
+  date: string;
+  time: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  doctor_name: string;
+  doctor: IVets;
+}
