@@ -4,12 +4,14 @@ import signupReducer from "./features/Signup/signupSlice";
 import { CategoriesReducer } from "./features/Categories.ts/CategoriesSlice";
 import { SignInReducer } from "./features/SignIn/SignInSlice";
 import { SubCategoriesReducer } from "./features/SubCategories/SubcategoriesSlice";
+import DoctorSlice from "./features/Doctor/DoctorSlice";
 export const store = configureStore({
   reducer: {
     signup: signupReducer,
     signIn: SignInReducer,
-    Categories:CategoriesReducer,
-    SubCategories:SubCategoriesReducer,
+    Categories: CategoriesReducer,
+    SubCategories: SubCategoriesReducer,
+    doctor: DoctorSlice,
   },
 });
 

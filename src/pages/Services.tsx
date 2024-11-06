@@ -1,28 +1,27 @@
-import { Button } from "@/components/ui/button";
+import ResultDialog from "@/components/ResultDialog";
 import { CheckInputs } from "@/data";
+import { IFormInputCheck } from "@/interface";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-enum IAnswer {
-  yes = "1",
-  no = "0",
-}
-
-interface IFormInput {
-  yala:string
-  temprature: IAnswer;
-  voming: IAnswer;
-  lack_of_appetite: IAnswer;
-  urinating: IAnswer;
-}
-
 function Services() {
-  const { register, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const [holdData, SetHoldData] = useState<IFormInputCheck>();
+  const { register, handleSubmit } = useForm<IFormInputCheck>();
+  const onSubmit: SubmitHandler<IFormInputCheck> = (data) => {
+    SetHoldData(data);
+   
+  };
 
-  const AllChecks = CheckInputs.map((curInput,index) => (
-    <div key={index} className="my-2 ps-4 flex justify-between w-1/2">
+  const AllChecks = CheckInputs.map((curInput, index) => (
+    <div
+      key={index}
+      className="my-2  space-y-2 ps-4 flex items-center justify-between w-1/2 mx-auto"
+    >
       <label>{curInput.label}</label>
-      <select className="bg-background text-foreground w-1/4" {...register(`${curInput.type}`)}>
+      <select
+        className="bg-background text-foreground p-1 rounded-md w-1/2  "
+        {...register(`${curInput.type}`)}
+      >
         <option value="1">Yes</option>
         <option value="0">No</option>
       </select>
@@ -31,25 +30,26 @@ function Services() {
 
   return (
     <>
-      <div className="">
-        <div className="">
-          <h2 className="text-4xl text-center font-bold">Check your pet Now !</h2>
-          <p className="w-[14%] h-1 bg-foreground my-2 mx-auto"></p>
-        </div>
-        <div className=" flex justify-center items-center container py-10 bg-red-400 my-4 rounded-md border border-foreground">
-          <form className="flex-1 bg-indigo-600 p-4 " onSubmit={handleSubmit(onSubmit)}>
-            {AllChecks}
-            <label htmlFor="yala">High temperatue?</label>
-            <input type="radio" value={"Yes"}  {...register("yala")} />
-            <br />
-
-           <Button type="submit" className="mx-auto block" >Submit</Button>
-          </form>
-          <div className=" bg-gray-700 flex-1">
-            result
+      <h2 className="text-4xl text-center font-bold">Check your pet Now !</h2>
+      <div className="   py-10  my-4 rounded-md border border-foreground">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="my-2  space-y-2 ps-4 flex items-center justify-between w-1/2 mx-auto">
+            <label>Type Pet</label>
+            <select
+              className="bg-background text-foreground p-1 rounded-md w-1/2  "
+              {...register("category_id")}
+            >
+              <option value="1">Dogs</option>
+              <option value="2">Cats</option>
+              <option value="3">Fish</option>
+              <option value="4">Hamster</option>
+              <option value="5">Bird</option>
+            </select>
           </div>
-        </div>
-          
+          {AllChecks}
+
+          <ResultDialog InputCheck={holdData!} />
+        </form>
       </div>
     </>
   );

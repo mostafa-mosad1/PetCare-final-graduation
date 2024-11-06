@@ -76,8 +76,52 @@ export interface IVets {
   address: string;
   email: string;
   email_verified_at: string;
-  type:string;
+  type: string;
   img: string;
   created_at: string;
   updated_at: string;
+}
+
+export interface IFormAppointments {
+  label: string;
+  type: string;
+  id: "pet_name" | "date" | "time";
+  placeholder: string;
+  validation: {
+    required?: boolean;
+    minLength?: number;
+  };
+}
+export interface IAppointments {
+  doctor_id?: string;
+  pet_name: string;
+  date: string;
+  time: string;
+}
+
+export interface IBookingVet {
+  id: number;
+  user_id: number;
+  doctor_id: number;
+  pet_name: string;
+  date: string;
+  time: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  doctor_name: string;
+  doctor: IVets;
+}
+
+enum IAnswer {
+  yes = "1",
+  no = "0",
+}
+
+export interface IFormInputCheck {
+  category_id:"Cats"|"Dogs"|"Bird"|"Hamster"|"Fish",
+  temprature: IAnswer;
+  voming: IAnswer;
+  lack_of_appetite: IAnswer;
+  urinating: IAnswer;
 }
