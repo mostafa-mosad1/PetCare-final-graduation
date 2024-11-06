@@ -10,6 +10,7 @@ import Lottie from "lottie-react";
 import LoginAnimated from "../assets/Images/register.json";
 import { useAppDispatch } from "@/redux/store";
 import { SignInFuncation } from "@/redux/features/SignIn/SignInSlice";
+import { userProfile } from "@/redux/features/Profile/ProfileSlice";
 
 function Login() {
   const dispatch = useAppDispatch();
@@ -21,10 +22,13 @@ function Login() {
   const onSubmit: SubmitHandler<ILoginInput> = async (data) => {
     console.log(data);
     const x = await dispatch(SignInFuncation(data));
+   const max =  dispatch(userProfile(x.payload))
     if (x.payload.success == true) {
       location.replace("/");
     }
     console.log(x.payload);
+    console.log(max.payload);
+  
   };
 
   const renderLogin = FormLogin.map((el, idx) => (

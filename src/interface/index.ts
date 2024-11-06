@@ -1,3 +1,4 @@
+
 export interface IFormRegister {
   name: string;
   type: string;
@@ -119,9 +120,28 @@ enum IAnswer {
 }
 
 export interface IFormInputCheck {
-  category_id:"Cats"|"Dogs"|"Bird"|"Hamster"|"Fish",
+  category_id: "Cats" | "Dogs" | "Bird" | "Hamster" | "Fish";
   temprature: IAnswer;
   voming: IAnswer;
   lack_of_appetite: IAnswer;
   urinating: IAnswer;
+}
+
+export interface IProfile {
+  success: boolean;
+  token: string;
+  user: {
+    id: number;
+    firstname: string;
+    lastname: string;
+    username: string;
+    contact_number: string;
+    address: string;
+    email: string;
+    email_verified_at: string;
+    type: string;
+    img: string;
+    created_at: string;
+    updated_at: string;
+  };
 }
