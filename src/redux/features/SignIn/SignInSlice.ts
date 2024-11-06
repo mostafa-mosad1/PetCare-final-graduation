@@ -67,6 +67,7 @@ export const SignInSlice = createSlice({
       state.loading = false;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       state.data = action.payload as any;
+      
     });
     builder.addCase(SignInFuncation.rejected, (state) => {
       state.loading = false;

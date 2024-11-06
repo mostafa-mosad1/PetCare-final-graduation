@@ -104,7 +104,31 @@ export const FormLogin: IFormLogin[] = [
       minLength: 5,
     },
   },
-];
+]
+
+
+export const CheckInputs:{
+  label:string,
+  type:"temprature" | "voming" | "lack_of_appetite" | "urinating"
+}[] =[
+  {
+    label:"High temperatue?",
+    type:"temprature"
+  },
+  {
+    label:"Voming?",
+    type:"voming"
+  },
+  {
+    label:"Lack of appetite?",
+    type:"lack_of_appetite"
+  },
+  {
+    label:"Urinating?",
+    type:"urinating"
+  },
+]
+
 
 export const FormAppointments: IFormAppointments[] = [
   {

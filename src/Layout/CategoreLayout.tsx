@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ICategories } from "@/interface";
-import { CategoriesFunction } from "@/redux/features/Categories.ts/CategoriesSlice";
+import { CategoriesFunction } from "@/redux/features/Categories/CategoriesSlice";
 import { RootState, useAppDispatch } from "@/redux/store";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
