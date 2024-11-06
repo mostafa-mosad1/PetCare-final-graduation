@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "./theme-provider";
 import Cookies from "@/Cookies";
+import { Link } from "react-router-dom";
 
 function HeaderOne() {
   const typeNav = Cookies.get("type");
@@ -69,10 +70,12 @@ function HeaderOne() {
         </form>
         <div className="flex gap-4 flex-wrap flex-col md:flex-row">
           {typeNav === "Vet" && (
-            <Button className="bg-background text-foreground ">
-              <Syringe />
-              VET Booking
-            </Button>
+            <Link to={"vet-booking"}>
+              <Button className="bg-background text-foreground ">
+                <Syringe />
+                VET Booking
+              </Button>
+            </Link>
           )}
           {typeNav === "Trader" && (
             <>
@@ -86,12 +89,16 @@ function HeaderOne() {
               </Button>
             </>
           )}
-          <Button className="bg-background text-foreground ">
-            <Syringe /> My Booking
-          </Button>
-          <Button className="bg-background text-foreground">
-            <ShoppingCart /> Shopping Cart
-          </Button>
+          <Link to={"my-booking"}>
+            <Button className="bg-background text-foreground ">
+              <Syringe /> My Booking
+            </Button>
+          </Link>
+          <Link to={"/shop"}>
+            <Button className="bg-background text-foreground">
+              <ShoppingCart /> Shopping Cart
+            </Button>
+          </Link>
           <Button className="bg-background text-foreground">
             <BellRing /> Notification
           </Button>

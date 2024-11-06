@@ -112,3 +112,31 @@ export interface IBookingVet {
   doctor_name: string;
   doctor: IVets;
 }
+
+export interface IVetBooking {
+  id: number;
+  user_id: number;
+  doctor_id: number;
+  pet_name: string;
+  date: string;
+  time: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  user_name: string;
+  user: IUser;
+}
+export interface IUser {
+  id: number;
+  firstname: string;
+  lastname: string;
+  username: string;
+  contact_number: string;
+  address: string;
+  email: string;
+  email_verified_at: string | null;
+  type: string;
+  img: string | null;
+  created_at: string;
+  updated_at: string;
+}

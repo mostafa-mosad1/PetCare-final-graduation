@@ -11,8 +11,12 @@ function useGetHook({ queryKey, url, config }: IQuery) {
   return useQuery({
     queryKey,
     queryFn: async () => {
-      const res= await axios.get(url, config);
-      return res.data;
+      try {
+        const res = await axios.get(url, config);
+        return res.data;
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
 }

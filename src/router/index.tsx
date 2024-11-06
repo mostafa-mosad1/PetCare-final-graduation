@@ -12,6 +12,7 @@ import Services from "@/pages/Services";
 import Shop from "@/pages/Shop";
 import Signup from "@/pages/Signup";
 import Subcategories from "@/pages/Subcategories";
+import Vetbooking from "@/pages/Vetbooking";
 
 import {
   createBrowserRouter,
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
         <Route path="/about" element={<About />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/my-booking" element={<Mybooking />}></Route>
+        <Route path="/vet-booking" element={<Vetbooking />}></Route>
       </Route>
 
       {/* 2 */}
