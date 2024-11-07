@@ -10,7 +10,7 @@ import Lottie from "lottie-react";
 import LoginAnimated from "../assets/Images/register.json";
 import { useAppDispatch } from "@/redux/store";
 import { SignInFuncation } from "@/redux/features/SignIn/SignInSlice";
-import { userProfile } from "@/redux/features/Profile/ProfileSlice";
+import { GetUserProfile } from "@/redux/features/Profile/ProfileSlice";
 
 function Login() {
   const dispatch = useAppDispatch();
@@ -22,10 +22,27 @@ function Login() {
   const onSubmit: SubmitHandler<ILoginInput> = async (data) => {
     console.log(data);
     const x = await dispatch(SignInFuncation(data));
-   const max =  dispatch(userProfile(x.payload))
-    if (x.payload.success == true) {
-      location.replace("/");
+   const max = await  dispatch(GetUserProfile({
+    "success": true,
+    "token": "3543434346868483",
+    "user": {
+        "id": 1,
+        "firstname": "Ahmed c",
+        "lastname": "Mohamed",
+        "username": "ahmed",
+        "contact_number": "64564564",
+        "address": "address 11",
+        "email": "ahmed@gmail.com",
+        "email_verified_at": null,
+        "type": "Customer",
+        "img": "/uploads/1730322515_1.png",
+        "created_at": "2023-04-12T03:21:10.000000Z",
+        "updated_at": "2024-10-30T21:08:35.000000Z"
     }
+}))
+    // if (x.payload.success == true) {
+    //   location.replace("/");
+    // }
     console.log(x.payload);
     console.log(max.payload);
   
