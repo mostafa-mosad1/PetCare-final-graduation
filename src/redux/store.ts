@@ -6,6 +6,7 @@ import { SignInReducer } from "./features/SignIn/SignInSlice";
 import { SubCategoriesReducer } from "./features/SubCategories/SubcategoriesSlice";
 import DoctorSlice from "./features/Doctor/DoctorSlice";
 import { profileReducer } from "./features/Profile/ProfileSlice";
+import { petsSlice } from "./features/Pet/PetSlice";
 export const store = configureStore({
   reducer: {
     signup: signupReducer,
@@ -13,8 +14,11 @@ export const store = configureStore({
     Categories: CategoriesReducer,
     SubCategories: SubCategoriesReducer,
     doctor: DoctorSlice,
-    profile : profileReducer
+    profile : profileReducer,
+    [petsSlice.reducerPath]:petsSlice.reducer
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(petsSlice.middleware), 
 });
 
 export type RootState = ReturnType<typeof store.getState>;

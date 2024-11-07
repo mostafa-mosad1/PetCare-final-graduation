@@ -170,3 +170,13 @@ export interface IProfile {
     updated_at: string;
   };
 }
+
+export interface Ipet  {
+  id: number,
+  user_id: number,
+  name: string,
+  img: string,
+  vaccines: string,
+  created_at: string,
+  updated_at: string
+}
