@@ -171,12 +171,27 @@ export interface IProfile {
   };
 }
 
-export interface Ipet  {
-  id: number,
-  user_id: number,
-  name: string,
-  img: string,
-  vaccines: string,
-  created_at: string,
-  updated_at: string
+export interface Ipet {
+  id: number;
+  user_id: number;
+  name: string;
+  img: string;
+  vaccines: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IFormAddPet {
+  label: string;
+  type: string;
+  id: "name" | "vaccines";
+  placeholder: string;
+  validation: {
+    required?: boolean;
+    minLength?: number;
+  };
+}
+export interface IAddPet {
+  name: string;
+  vaccines: string;
 }

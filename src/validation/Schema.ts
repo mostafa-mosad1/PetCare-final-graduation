@@ -54,3 +54,10 @@ export const AppointmentsSchema = yup.object({
   date: yup.string().required("Date is Required"),
   time: yup.string().required("Time is Required"),
 });
+export const AddPetSchema = yup.object({
+  name: yup
+    .string()
+    .required("Name Of Pet is Required")
+    .min(2, "Name Should be at least 2 Character"),
+  vaccines: yup.string().required("Time is Required"),
+});

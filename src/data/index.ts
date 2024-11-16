@@ -1,4 +1,9 @@
-import { IFormAppointments, IFormLogin, IFormRegister } from "@/interface";
+import {
+  IFormAddPet,
+  IFormAppointments,
+  IFormLogin,
+  IFormRegister,
+} from "@/interface";
 
 export const formRegister: IFormRegister[] = [
   {
@@ -104,31 +109,29 @@ export const FormLogin: IFormLogin[] = [
       minLength: 5,
     },
   },
-]
+];
 
-
-export const CheckInputs:{
-  label:string,
-  type:"temprature" | "voming" | "lack_of_appetite" | "urinating"
-}[] =[
+export const CheckInputs: {
+  label: string;
+  type: "temprature" | "voming" | "lack_of_appetite" | "urinating";
+}[] = [
   {
-    label:"High temperatue?",
-    type:"temprature"
+    label: "High temperatue?",
+    type: "temprature",
   },
   {
-    label:"Voming?",
-    type:"voming"
+    label: "Voming?",
+    type: "voming",
   },
   {
-    label:"Lack of appetite?",
-    type:"lack_of_appetite"
+    label: "Lack of appetite?",
+    type: "lack_of_appetite",
   },
   {
-    label:"Urinating?",
-    type:"urinating"
+    label: "Urinating?",
+    type: "urinating",
   },
-]
-
+];
 
 export const FormAppointments: IFormAppointments[] = [
   {
@@ -154,6 +157,28 @@ export const FormAppointments: IFormAppointments[] = [
     label: " Expected Appointment Time",
     type: "time",
     id: "time",
+    placeholder: "",
+    validation: {
+      required: true,
+    },
+  },
+];
+
+export const AddFormPet: IFormAddPet[] = [
+  {
+    label: "Pet Name",
+    type: "text",
+    id: "name",
+    placeholder: "Enter Pet Name",
+    validation: {
+      required: true,
+      minLength: 2,
+    },
+  },
+  {
+    label: "Vaccines",
+    type: "time",
+    id: "vaccines",
     placeholder: "",
     validation: {
       required: true,

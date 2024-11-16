@@ -14,11 +14,11 @@ export const store = configureStore({
     Categories: CategoriesReducer,
     SubCategories: SubCategoriesReducer,
     doctor: DoctorSlice,
-    profile : profileReducer,
-    [petsSlice.reducerPath]:petsSlice.reducer
+    profile: profileReducer,
+    [petsSlice.reducerPath]: petsSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(petsSlice.middleware), 
+    getDefaultMiddleware().concat(petsSlice.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

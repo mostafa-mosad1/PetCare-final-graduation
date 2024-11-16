@@ -1,3 +1,4 @@
+import Addpet from "@/components/Addpet";
 import { Ipet } from "@/interface";
 import {
   useDeletePetsUserMutation,
@@ -5,7 +6,6 @@ import {
 } from "@/redux/features/Pet/PetSlice";
 import { RootState } from "@/redux/store";
 import {
-  BadgePlus,
   Contact,
   ImageUp,
   MapPin,
@@ -17,13 +17,11 @@ import {
 import { useSelector } from "react-redux";
 
 function Profile() {
-const { profileData } = useSelector((state: RootState) => state.profile);
-   console.log(profileData);
+  const { profileData } = useSelector((state: RootState) => state.profile);
 
   const { isLoading, data } = useGetPetsUserQuery("");
-  console.log(data);
   const [deletePet, { data: resDelete }] = useDeletePetsUserMutation();
-  console.log(resDelete)
+  console.log(resDelete);
   return (
     <>
       <div className="flex flex-col md:flex-row">
@@ -31,7 +29,9 @@ const { profileData } = useSelector((state: RootState) => state.profile);
           <div className="mx-auto w-52 h-52 rounded-full overflow-hidden bg-red-400">
             <img className="w-full" src="" alt="" />
           </div>
-          <h2 className="capitalize text-2xl">{profileData?.user.firstname} {profileData?.user.lastname}</h2>
+          <h2 className="capitalize text-2xl">
+            {profileData?.user.firstname} {profileData?.user.lastname}
+          </h2>
           <p>ID : {profileData?.user.id}</p>
           <p className="m-9 mx-auto w-3/4 h-1 bg-foreground "></p>
           <div className="flex w-2/5 mx-auto text-center  my-5 justify-start gap-4 ">
@@ -54,7 +54,9 @@ const { profileData } = useSelector((state: RootState) => state.profile);
           </div>
         </div>
         <div className="flex-1 relative text-4xl p-4 bg-cyan-400">
-          <BadgePlus className="absolute cursor-pointer top-4 right-4 text-foreground" />
+          <div className="absolute cursor-pointer top-4 right-4 text-foreground">
+            <Addpet userId={profileData?.user.id} />
+          </div>{" "}
           <h2 className="capitalize text-4xl text-center pt-4 font-bold">
             My Animals
           </h2>

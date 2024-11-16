@@ -4,6 +4,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const petsSlice = createApi({
   tagTypes: ["pets"],
   reducerPath: "pets",
+  refetchOnReconnect: true,
+  refetchOnMountOrArgChange: true,
   baseQuery: fetchBaseQuery({ baseUrl: "http://127.0.0.1:8000/api" }),
   endpoints: (builder) => ({
     getPetsUser: builder.query({
@@ -15,7 +17,7 @@ export const petsSlice = createApi({
           },
         };
       },
-       providesTags: (result) =>
+      providesTags: (result) =>
         result
           ? [
               ...result.pets.map(({ id }: { id: number }) => ({
@@ -36,9 +38,26 @@ export const petsSlice = createApi({
           },
         };
       },
-      invalidatesTags: [{ type: 'pets', id: 'LIST' }],
+      invalidatesTags: [{ type: "pets", id: "LIST" }],
+    }),
+    addNewPet: builder.mutation({
+      query: (body) => {
+        return {
+          url: `/store-user-pet`,
+          method: "POST",
+          body,
+          headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`,
+          },
+        };
+      },
+      invalidatesTags: [{ type: "pets", id: "LIST" }],
     }),
   }),
 });
 
-export const { useGetPetsUserQuery, useDeletePetsUserMutation } = petsSlice;
+export const {
+  useGetPetsUserQuery,
+  useDeletePetsUserMutation,
+  useAddNewPetMutation,
+} = petsSlice;
