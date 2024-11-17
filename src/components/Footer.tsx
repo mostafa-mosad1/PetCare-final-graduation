@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <>
-      <div className="flex justify-between container   bg-mains  pt-6 pb-2 rounded-md  space-x-4 ">
+    <div className=" bg-mains">
+      <div className="flex justify-between container     pt-6 pb-2 rounded-md  space-x-4 ">
         <div className="flex-1">
           <h2 className="text-4xl font-semibold">Pet Care</h2>
           <p className="w-[4%] h-1 bg-foreground my-2"></p>
@@ -50,12 +50,14 @@ function Footer() {
           <h2 className="text-4xl font-semibold ">Have a Question?</h2>
           <p className="w-[4%] h-1 bg-foreground my-2"></p>
 
-          <p className="text-xl my-2">203 Fake St. Mansoura, El-Dakahlia, Egypt</p>
+          <p className="text-xl my-2">
+            203 Fake St. Mansoura, El-Dakahlia, Egypt
+          </p>
           <p className="text-xl my-2">+20 1234567890</p>
           <p className="text-xl my-2">info@yourdomain.com</p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

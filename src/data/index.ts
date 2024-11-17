@@ -3,6 +3,7 @@ import {
   IFormAppointments,
   IFormLogin,
   IFormRegister,
+  IRadioGroupPet,
 } from "@/interface";
 
 export const formRegister: IFormRegister[] = [
@@ -183,5 +184,28 @@ export const AddFormPet: IFormAddPet[] = [
     validation: {
       required: true,
     },
+  },
+];
+
+export const RadioGroupPet: IRadioGroupPet[] = [
+  {
+    id: "r1",
+    Label: "Pet",
+    value: "pet",
+  },
+  {
+    id: "r2",
+    Label: "Food",
+    value: "food",
+  },
+  {
+    id: "r3",
+    Label: "Accessories",
+    value: "accessories",
+  },
+  {
+    id: "r4",
+    Label: "Treatment",
+    value: "treatment",
   },
 ];

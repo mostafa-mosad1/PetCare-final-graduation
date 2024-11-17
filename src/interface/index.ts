@@ -195,3 +195,22 @@ export interface IAddPet {
   name: string;
   vaccines: string;
 }
+
+export interface IRadioGroupPet {
+  id: string;
+  Label: string;
+  value: string;
+}
+
+export interface IProudctShop {
+  id: number;
+  user_id: number;
+  category_id: number;
+  type: string;
+  title: string;
+  price: string;
+  img: string;
+  stock: number;
+  created_at: string;
+  updated_at: string;
+}
