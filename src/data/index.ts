@@ -3,7 +3,9 @@ import {
   IFormAppointments,
   IFormLogin,
   IFormRegister,
+  IFormUpdateProfile,
   IRadioGroupPet,
+  IUpdate,
 } from "@/interface";
 
 export const formRegister: IFormRegister[] = [
@@ -167,7 +169,7 @@ export const FormAppointments: IFormAppointments[] = [
 
 export const AddFormPet: IFormAddPet[] = [
   {
-    label: "Pet Name",
+    label: "Firs Name",
     type: "text",
     id: "name",
     placeholder: "Enter Pet Name",
@@ -181,6 +183,36 @@ export const AddFormPet: IFormAddPet[] = [
     type: "time",
     id: "vaccines",
     placeholder: "",
+    validation: {
+      required: true,
+    },
+  },
+];
+export const UpdateFormProfile: IFormUpdateProfile[] = [
+  {
+    label: "First Name",
+    type: "text",
+    id: "firstname",
+    placeholder: "Enter Pet Name",
+    validation: {
+      required: true,
+      minLength: 2,
+    },
+  },
+  {
+    label: "LastName",
+    type: "text",
+    id: "lastname",
+    placeholder: "LastName",
+    validation: {
+      required: true,
+    },
+  },
+  {
+    label: "Address",
+    type: "text",
+    id: "address",
+    placeholder: "Address",
     validation: {
       required: true,
     },

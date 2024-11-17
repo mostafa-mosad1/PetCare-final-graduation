@@ -8,6 +8,7 @@ import DoctorSlice from "./features/Doctor/DoctorSlice";
 import { profileReducer } from "./features/Profile/ProfileSlice";
 import { petsSlice } from "./features/Pet/PetSlice";
 import { shopSlice } from "./features/Shop/ShopSlice";
+import { UpdateProfileSliceReducer } from "./features/UpdateProfileSlice/UpdateProfileSlice";
 export const store = configureStore({
   reducer: {
     signup: signupReducer,
@@ -16,6 +17,7 @@ export const store = configureStore({
     SubCategories: SubCategoriesReducer,
     doctor: DoctorSlice,
     profile: profileReducer,
+    UpdateProfile: UpdateProfileSliceReducer,
     [petsSlice.reducerPath]: petsSlice.reducer,
     [shopSlice.reducerPath]: shopSlice.reducer,
   },

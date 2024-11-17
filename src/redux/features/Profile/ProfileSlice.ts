@@ -1,5 +1,5 @@
 import { IProfile } from "@/interface";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: {
   profileData: IProfile | null;
@@ -11,7 +11,7 @@ const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
-    GetUserProfile: (state, action) => {
+    GetUserProfile: (state, action:PayloadAction<IProfile>) => {
       state.profileData = action.payload;
     },
   },

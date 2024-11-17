@@ -152,23 +152,24 @@ export interface IFormInputCheck {
   urinating: IAnswer;
 }
 
+export interface IUser {
+  id: number;
+  firstname: string;
+  lastname: string;
+  username: string;
+  contact_number: string;
+  address: string;
+  email: string;
+  email_verified_at: string | null;
+  type: string;
+  img: string;
+  created_at: string;
+  updated_at: string;
+}
 export interface IProfile {
   success: boolean;
   token: string;
-  user: {
-    id: number;
-    firstname: string;
-    lastname: string;
-    username: string;
-    contact_number: string;
-    address: string;
-    email: string;
-    email_verified_at: string;
-    type: string;
-    img: string;
-    created_at: string;
-    updated_at: string;
-  };
+  user: IUser;
 }
 
 export interface Ipet {
@@ -194,6 +195,22 @@ export interface IFormAddPet {
 export interface IAddPet {
   name: string;
   vaccines: string;
+}
+export interface IFormUpdateProfile {
+  label: string;
+  type: string;
+  id: keyof IUpdate;
+  placeholder: string;
+  validation: {
+    required?: boolean;
+    minLength?: number;
+  };
+}
+
+export interface IUpdate {
+  firstname: string;
+  lastname: string;
+  address: string;
 }
 
 export interface IRadioGroupPet {

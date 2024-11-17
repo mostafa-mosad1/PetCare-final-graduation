@@ -61,3 +61,18 @@ export const AddPetSchema = yup.object({
     .min(2, "Name Should be at least 2 Character"),
   vaccines: yup.string().required("Time is Required"),
 });
+export const updateProfileSchema = yup.object({
+  firstname: yup
+    .string()
+    .required("firstName is Required")
+    .min(2, "Name Should be at least 2 Character"),
+    lastname: yup
+    .string()
+    .required("lastName is Required")
+    .min(2, "Name Should be at least 2 Character"),
+    address: yup
+    .string()
+    .required("address is Required")
+    .min(2, "address Should be at least 2 Character"),
+});
+

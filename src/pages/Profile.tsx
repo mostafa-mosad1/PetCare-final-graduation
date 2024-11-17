@@ -1,4 +1,5 @@
 import Addpet from "@/components/Addpet";
+import UpdateProfile from "@/components/ui/UpdateProfile";
 import { Ipet } from "@/interface";
 import {
   useDeletePetsUserMutation,
@@ -18,39 +19,74 @@ import { useSelector } from "react-redux";
 
 function Profile() {
   const { profileData } = useSelector((state: RootState) => state.profile);
-
   const { isLoading, data } = useGetPetsUserQuery("");
   const [deletePet, { data: resDelete }] = useDeletePetsUserMutation();
-  console.log(resDelete);
+  const UserProfileData = JSON.parse(localStorage.getItem("UserProfileData"));
+
   return (
     <>
-      <div className="flex flex-col md:flex-row">
-        <div className="w-full md:w-2/5 relative text-foreground mx-auto text-center bg-mains/50 py-10 border border-foreground">
+      <div className="flex my-4 flex-col md:flex-row">
+        <div className="w-full md:w-2/5 relative text-foreground mx-auto text-center bg-mains/50 rounded-md  py-10 border border-foreground">
           <div className="mx-auto w-52 h-52 rounded-full overflow-hidden bg-red-400">
-            <img className="w-full" src="" alt="" />
+            <img
+              className="w-full"
+              src={`http://127.0.0.1:8000/assets/images/${
+                profileData ? profileData?.user.img : UserProfileData.img
+              }`}
+              alt=""
+            />
           </div>
           <h2 className="capitalize text-2xl">
-            {profileData?.user.firstname} {profileData?.user.lastname}
+            {profileData
+              ? profileData?.user.firstname
+              : UserProfileData.firstname}
+            {profileData
+              ? profileData?.user.lastname
+              : UserProfileData.lastname}
           </h2>
-          <p>ID : {profileData?.user.id}</p>
+          <p>ID : {profileData ? profileData?.user.id : UserProfileData.id}</p>
           <p className="m-9 mx-auto w-3/4 h-1 bg-foreground "></p>
           <div className="flex w-2/5 mx-auto text-center  my-5 justify-start gap-4 ">
             <MapPin />
-            {profileData?.user.address}
+            {profileData ? profileData?.user.address : UserProfileData.address}
           </div>
           <div className="flex w-2/5 mx-auto text-center  my-5 justify-start gap-4 ">
             <Contact />
-            <p>{profileData?.user.username}</p>
+            <p>
+              {profileData
+                ? profileData?.user.username
+                : UserProfileData.username}
+            </p>
           </div>
           <div className="flex w-2/5 mx-auto text-center  my-5 justify-start gap-4 ">
             <Phone />
-            <p>{profileData?.user.contact_number}</p>
+            <p>
+              {profileData
+                ? profileData?.user.contact_number
+                : UserProfileData.contact_number}
+            </p>
           </div>
           <div className="flex w-2/5 mx-auto text-center  my-5 justify-start gap-4 ">
             <Type />
-            <p>{profileData?.user.type}</p>
-            <Pencil className="absolute cursor-pointer top-4 right-4 text-foreground" />
-            <ImageUp className="absolute cursor-pointer top-4 right-12 text-foreground" />
+            <p>{profileData ? profileData?.user.type : UserProfileData.type}</p>
+            <UpdateProfile
+              firstName={
+                profileData
+                  ? profileData?.user.firstname
+                  : UserProfileData.firstname
+              }
+              lastName={
+                profileData
+                  ? profileData?.user.lastname
+                  : UserProfileData.lastname
+              }
+              Address={
+                profileData
+                  ? profileData?.user.address
+                  : UserProfileData.address
+              }
+            />
+            <ImageUp className="absolute cursor-pointer top-4 right-20 text-foreground" />
           </div>
         </div>
         <div className="flex-1 relative text-4xl p-4 bg-cyan-400">

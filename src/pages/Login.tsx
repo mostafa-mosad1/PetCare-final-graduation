@@ -11,6 +11,8 @@ import LoginAnimated from "../assets/Images/register.json";
 import { useAppDispatch } from "@/redux/store";
 import { SignInFuncation } from "@/redux/features/SignIn/SignInSlice";
 import { GetUserProfile } from "@/redux/features/Profile/ProfileSlice";
+import Cookies from "@/Cookies";
+import { json } from "stream/consumers";
 
 function Login() {
   const dispatch = useAppDispatch();
@@ -22,9 +24,9 @@ function Login() {
   } = useForm<ILoginInput>({ resolver: yupResolver(LoginSchema) });
   const onSubmit: SubmitHandler<ILoginInput> = async (data) => {
     console.log(data);
-    const LoginResose = await dispatch(SignInFuncation(data));
-    await dispatch(GetUserProfile(LoginResose.payload));
-
+    const LoginResponse = await dispatch(SignInFuncation(data));
+    await dispatch(GetUserProfile(LoginResponse.payload));
+    localStorage.setItem("UserProfileData",JSON.stringify(LoginResponse.payload.user))
     navgate("/");
   };
 

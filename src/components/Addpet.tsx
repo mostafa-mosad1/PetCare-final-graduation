@@ -25,7 +25,6 @@ function Addpet({ userId }: IProps) {
   async function handleChangeimg(e: ChangeEvent<HTMLInputElement>) {
     await setImg(e.target.files);
   }
-  console.log(userId);
   const {
     register,
     handleSubmit,
