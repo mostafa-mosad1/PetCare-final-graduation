@@ -92,7 +92,7 @@ function Addpet({ userId }: IProps) {
                     type="file"
                     onChange={(e) => handleChangeimg(e)}
                   />
-                  {!img && <InputError msg="Add Photo Plase" />}
+                  {!img && <InputError msg="Add Photo Please" />}
                 </div>
               </div>
 

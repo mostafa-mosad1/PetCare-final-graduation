@@ -6,22 +6,15 @@ import {
   useGetPetsUserQuery,
 } from "@/redux/features/Pet/PetSlice";
 import { RootState } from "@/redux/store";
-import {
-  Contact,
-  ImageUp,
-  MapPin,
-  Pencil,
-  Phone,
-  Trash2,
-  Type,
-} from "lucide-react";
+import { Contact, ImageUp, MapPin, Phone, Trash2, Type } from "lucide-react";
 import { useSelector } from "react-redux";
 
 function Profile() {
   const { profileData } = useSelector((state: RootState) => state.profile);
   const { isLoading, data } = useGetPetsUserQuery("");
-  const [deletePet, { data: resDelete }] = useDeletePetsUserMutation();
-  const UserProfileData = JSON.parse(localStorage.getItem("UserProfileData"));
+  const [deletePet] = useDeletePetsUserMutation();
+  const parsedData = localStorage.getItem("UserProfileData");
+  const userProfileData = parsedData ? JSON.parse(parsedData) : null;
 
   return (
     <>
@@ -31,7 +24,7 @@ function Profile() {
             <img
               className="w-full"
               src={`http://127.0.0.1:8000/assets/images/${
-                profileData ? profileData?.user.img : UserProfileData.img
+                profileData ? profileData?.user.img : userProfileData.img
               }`}
               alt=""
             />
@@ -39,23 +32,23 @@ function Profile() {
           <h2 className="capitalize text-2xl">
             {profileData
               ? profileData?.user.firstname
-              : UserProfileData.firstname}
+              : userProfileData.firstname}
             {profileData
               ? profileData?.user.lastname
-              : UserProfileData.lastname}
+              : userProfileData.lastname}
           </h2>
-          <p>ID : {profileData ? profileData?.user.id : UserProfileData.id}</p>
+          <p>ID : {profileData ? profileData?.user.id : userProfileData.id}</p>
           <p className="m-9 mx-auto w-3/4 h-1 bg-foreground "></p>
           <div className="flex w-2/5 mx-auto text-center  my-5 justify-start gap-4 ">
             <MapPin />
-            {profileData ? profileData?.user.address : UserProfileData.address}
+            {profileData ? profileData?.user.address : userProfileData.address}
           </div>
           <div className="flex w-2/5 mx-auto text-center  my-5 justify-start gap-4 ">
             <Contact />
             <p>
               {profileData
                 ? profileData?.user.username
-                : UserProfileData.username}
+                : userProfileData.username}
             </p>
           </div>
           <div className="flex w-2/5 mx-auto text-center  my-5 justify-start gap-4 ">
@@ -63,27 +56,27 @@ function Profile() {
             <p>
               {profileData
                 ? profileData?.user.contact_number
-                : UserProfileData.contact_number}
+                : userProfileData.contact_number}
             </p>
           </div>
           <div className="flex w-2/5 mx-auto text-center  my-5 justify-start gap-4 ">
             <Type />
-            <p>{profileData ? profileData?.user.type : UserProfileData.type}</p>
+            <p>{profileData ? profileData?.user.type : userProfileData.type}</p>
             <UpdateProfile
               firstName={
                 profileData
                   ? profileData?.user.firstname
-                  : UserProfileData.firstname
+                  : userProfileData.firstname
               }
               lastName={
                 profileData
                   ? profileData?.user.lastname
-                  : UserProfileData.lastname
+                  : userProfileData.lastname
               }
               Address={
                 profileData
                   ? profileData?.user.address
-                  : UserProfileData.address
+                  : userProfileData.address
               }
             />
             <ImageUp className="absolute cursor-pointer top-4 right-20 text-foreground" />

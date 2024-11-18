@@ -8,9 +8,18 @@ export const shopSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://127.0.0.1:8000/api" }),
   endpoints: (builder) => ({
     getProudctShop: builder.query({
-      query: () => ({
-        url: "/products",
-      }),
+      query: ({ category, type }) => {
+        let allApi = "/products";
+
+        if (category) {
+          allApi += `?category=${category}`;
+        }
+        if (type) {
+          allApi += `${category ? "&" : "?"}type=${type}`;
+        }
+
+        return { url: allApi };
+      },
       providesTags: (result) =>
         result
           ? [

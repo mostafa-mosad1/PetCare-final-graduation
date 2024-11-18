@@ -5,7 +5,6 @@ import {
   IFormRegister,
   IFormUpdateProfile,
   IRadioGroupPet,
-  IUpdate,
 } from "@/interface";
 
 export const formRegister: IFormRegister[] = [
