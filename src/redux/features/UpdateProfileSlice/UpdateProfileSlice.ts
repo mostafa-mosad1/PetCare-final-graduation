@@ -28,8 +28,9 @@ export const UpdateData = createAsyncThunk(
         }
       );
       const UserProfileData = JSON.parse(
-        localStorage.getItem("UserProfileData")
+        localStorage.getItem("UserProfileData") ?? "{}"
       );
+
       const NewUserProfileData = {
         ...UserProfileData,
         firstname,
@@ -50,21 +51,12 @@ export const UpdateData = createAsyncThunk(
   }
 );
 
-const initialState: {
-  message: any;
-} = {
-  message: null,
-};
+const initialState = {};
 
 const UpdateProfileSlice = createSlice({
   name: "updateProfile",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(UpdateData.fulfilled, (state, action) => {
-      state.message = action.payload!;
-    });
-  },
 });
 
 export const UpdateProfileSliceReducer = UpdateProfileSlice.reducer;

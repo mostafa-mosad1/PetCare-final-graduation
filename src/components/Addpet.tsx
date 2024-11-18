@@ -20,6 +20,7 @@ interface IProps {
   userId: number | undefined;
 }
 function Addpet({ userId }: IProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const [addNewPet, { isLoading }] = useAddNewPetMutation();
   const [img, setImg] = useState<FileList | null>(null);
   async function handleChangeimg(e: ChangeEvent<HTMLInputElement>) {
@@ -43,7 +44,8 @@ function Addpet({ userId }: IProps) {
     if (img) {
       formData.append("img", img[0]);
     }
-    addNewPet(formData);
+    await addNewPet(formData);
+    setIsOpen(false);
   };
 
   const renderAddPet = AddFormPet.map((el, idx) => (
@@ -65,7 +67,7 @@ function Addpet({ userId }: IProps) {
   ));
   return (
     <div>
-      <Dialog>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
           <Button variant="outline">Add Pet</Button>
         </DialogTrigger>
@@ -93,7 +95,7 @@ function Addpet({ userId }: IProps) {
                     type="file"
                     onChange={(e) => handleChangeimg(e)}
                   />
-                  {!img && <InputError msg="Add Photo Plase" />}
+                  {!img && <InputError msg="Add Photo Please" />}
                 </div>
               </div>
 

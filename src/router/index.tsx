@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import Mybooking from "@/pages/Mybooking";
 import Profile from "@/pages/Profile";
+import ProudctDetails from "@/pages/ProudctDetails";
 import Services from "@/pages/Services";
 import Shop from "@/pages/Shop";
 import Signup from "@/pages/Signup";
@@ -31,6 +32,10 @@ const router = createBrowserRouter(
         <Route path="/doctor" element={<Doctor />}></Route>
         <Route path="/book/:id" element={<Book />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
+        <Route
+          path="/shop/proudctDetails/:id"
+          element={<ProudctDetails />}
+        ></Route>
         <Route path="/categories" element={<CategoreLayout />}>
           <Route
             path="/categories/Subcategories/:id"

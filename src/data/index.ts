@@ -5,7 +5,6 @@ import {
   IFormRegister,
   IFormUpdateProfile,
   IRadioGroupPet,
-  IUpdate,
 } from "@/interface";
 
 export const formRegister: IFormRegister[] = [
@@ -180,7 +179,7 @@ export const AddFormPet: IFormAddPet[] = [
   },
   {
     label: "Vaccines",
-    type: "time",
+    type: "date",
     id: "vaccines",
     placeholder: "",
     validation: {

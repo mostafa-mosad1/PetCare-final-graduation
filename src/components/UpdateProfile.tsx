@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/components/UpdateProfile.tsx
 // import { Button } from "@/components/ui/button";
 // import {
 //   Dialog,
@@ -110,18 +111,19 @@
 
 // export default UpdateProfile;
 
+=======
+>>>>>>> 3d96a64608b36f5481034b08c6169558f6df9be3:src/components/ui/UpdateProfile.tsx
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { UpdateFormProfile } from "@/data";
-import { AddPetSchema, updateProfileSchema } from "@/validation/Schema";
+import { updateProfileSchema } from "@/validation/Schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import InputError from "./InputError";
@@ -192,7 +194,11 @@ function UpdateProfile({ firstName, lastName, Address }: IProps) {
             <form onSubmit={handleSubmit(onSubmit)}>
               {UpdateDataInputs}
 
+<<<<<<< HEAD:src/components/UpdateProfile.tsx
               <Button className="block mx-auto mt-4" type="submit">Update</Button>
+=======
+              <Button type="submit">Update</Button>
+>>>>>>> 3d96a64608b36f5481034b08c6169558f6df9be3:src/components/ui/UpdateProfile.tsx
             </form>
           </div>
         </DialogContent>

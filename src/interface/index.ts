@@ -139,6 +139,7 @@ export interface IVetBooking {
   user_name: string;
   user: IUser;
 }
+
 enum IAnswer {
   yes = "1",
   no = "0",
