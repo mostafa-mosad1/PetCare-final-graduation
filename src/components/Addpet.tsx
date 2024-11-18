@@ -69,7 +69,7 @@ function Addpet({ userId }: IProps) {
     <div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button variant="outline">Add Pet</Button>
+          <Button className="bg-mains/80 text-white hover:bg-mains" variant="outline">Add Pet</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>

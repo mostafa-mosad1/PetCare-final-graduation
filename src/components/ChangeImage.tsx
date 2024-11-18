@@ -12,22 +12,12 @@ import { Label } from "@/components/ui/label";
 import Cookies from "@/Cookies";
 import axios from "axios";
 import { ImageUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function ChangeImage() {
 
-
-//  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
-//     const input = document.getElementById("picture") as HTMLInputElement; // احصل على الحقل
-//     if (input?.files?.[0]) {
-//       console.log(input.files[0]); // الملف المرفوع
-//     } else {
-//       console.log("لم يتم اختيار أي ملف.");
-//     }
-//   };
-  
-
+    const navgate = useNavigate();
 
 const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,12 +25,12 @@ const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     const input = document.getElementById("picture") as HTMLInputElement; 
     if (input?.files?.[0]) {
       const file = input.files[0];
-      console.log("الملف المرفوع:", file);
+      console.log(file);
   
       const formData = new FormData();
       formData.append("img", file); 
   
-      // إرسال البيانات باستخدام axios
+     
       try {
         const response = await axios.post("http://127.0.0.1:8000/api/change-image", formData, {
           headers: {
@@ -49,6 +39,9 @@ const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
           },
         });
         console.log("الاستجابة من الخادم:", response.data);
+        if(response.data.message == "success"){
+            navgate("/login");
+        }
       } catch (error) {
         console.error("حدث خطأ أثناء رفع الملف:", error);
       }
