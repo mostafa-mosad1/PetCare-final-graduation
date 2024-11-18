@@ -42,7 +42,7 @@ function Mybooking() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.booking.length === 0 ? (
+          {data?.booking.length === 0 ? (
             <TableRow>
               <TableCell className="font-medium">No</TableCell>
             </TableRow>

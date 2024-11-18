@@ -1,3 +1,4 @@
+import Cookies from "@/Cookies";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const shopSlice = createApi({
@@ -31,7 +32,21 @@ export const shopSlice = createApi({
             ]
           : [{ type: "shop", id: "LIST" }],
     }),
+    AddProductShop: builder.mutation({
+      query: (body) => {
+        return {
+          url: `/store-product`,
+          method: "POST",
+          body,
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${Cookies.get("token")}`,
+          },
+        };
+      },
+      invalidatesTags: [{ type: "shop", id: "LIST" }],
+    }),
   }),
 });
 
-export const { useGetProudctShopQuery } = shopSlice;
+export const { useGetProudctShopQuery, useAddProductShopMutation } = shopSlice;

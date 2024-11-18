@@ -83,10 +83,12 @@ function HeaderOne() {
                 <BriefcaseBusiness />
                 My Products
               </Button>
+              <Link to={"addProduct"}>
               <Button className="bg-background text-foreground ">
                 <Plus />
                 Add Product
               </Button>
+              </Link>
             </>
           )}
           <Link to={"my-booking"}>
