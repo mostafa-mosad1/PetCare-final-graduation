@@ -200,7 +200,7 @@ export const UpdateFormProfile: IFormUpdateProfile[] = [
     },
   },
   {
-    label: "LastName",
+    label: "Last Name",
     type: "text",
     id: "lastname",
     placeholder: "LastName",

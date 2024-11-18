@@ -1,5 +1,6 @@
 import Addpet from "@/components/Addpet";
-import UpdateProfile from "@/components/ui/UpdateProfile";
+import ChangeImage from "@/components/ChangeImage";
+import UpdateProfile from "@/components/UpdateProfile";
 import { Ipet } from "@/interface";
 import {
   useDeletePetsUserMutation,
@@ -86,7 +87,7 @@ function Profile() {
                   : UserProfileData.address
               }
             />
-            <ImageUp className="absolute cursor-pointer top-4 right-20 text-foreground" />
+            <ChangeImage/>
           </div>
         </div>
         <div className="flex-1 relative text-4xl p-4 bg-cyan-400">
