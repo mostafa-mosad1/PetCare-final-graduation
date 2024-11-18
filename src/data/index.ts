@@ -179,7 +179,7 @@ export const AddFormPet: IFormAddPet[] = [
   },
   {
     label: "Vaccines",
-    type: "time",
+    type: "date",
     id: "vaccines",
     placeholder: "",
     validation: {
