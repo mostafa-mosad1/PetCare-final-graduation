@@ -78,9 +78,7 @@ function UpdateProfile({ firstName, lastName, Address }: IProps) {
           <div className="grid gap-4 py-4">
             <form onSubmit={handleSubmit(onSubmit)}>
               {UpdateDataInputs}
-              <Button className="block mx-auto mt-4" type="submit">
-                Update
-              </Button>
+
               <Button type="submit">Update</Button>
             </form>
           </div>

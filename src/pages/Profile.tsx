@@ -20,7 +20,7 @@ function Profile() {
   return (
     <>
       <div className="flex my-4 flex-col md:flex-row">
-        <div className="w-full md:w-2/5 relative text-foreground mx-auto text-center bg-mains/50 rounded-md  py-10 border border-foreground">
+        <div className="w-full md:w-2/5 relative text-foreground mx-auto text-center bg-mains/50 rounded-md  py-10 ">
           <div className="mx-auto w-52 h-52 rounded-full overflow-hidden bg-red-400">
             <img
               className="w-full"
@@ -83,7 +83,7 @@ function Profile() {
             <ChangeImage />
           </div>
         </div>
-        <div className="flex-1 relative text-4xl p-4 bg-cyan-400">
+        <div className="flex-1 relative text-4xl p-4 bg--400">
           <div className="absolute cursor-pointer top-4 right-4 text-foreground">
             <Addpet userId={profileData?.user.id} />
           </div>{" "}

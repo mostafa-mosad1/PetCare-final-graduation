@@ -66,13 +66,32 @@ export const updateProfileSchema = yup.object({
     .string()
     .required("firstName is Required")
     .min(2, "Name Should be at least 2 Character"),
-    lastname: yup
+  lastname: yup
     .string()
     .required("lastName is Required")
     .min(2, "Name Should be at least 2 Character"),
-    address: yup
+  address: yup
     .string()
     .required("address is Required")
     .min(2, "address Should be at least 2 Character"),
 });
 
+export const addProudctSchema = yup.object({
+  title: yup
+    .string()
+    .required("Name is Required")
+    .min(2, "Name Should be at least 2 Character"),
+  price: yup
+    .string()
+    .required("Price is Required")
+    .min(1, "Price Should be at least 1 Character"),
+  stock: yup.string().required("Stock is Required"),
+  category_id: yup
+    .string()
+    .oneOf(["1", "2", "3", "4", "5"], "Invalid Category")
+    .required("Category is Required"),
+  type: yup
+    .string()
+    .oneOf(["pet", "food", "Accessories", "Treatment"], "Invalid Type")
+    .required("Type is Required"),
+});

@@ -232,3 +232,22 @@ export interface IProudctShop {
   created_at: string;
   updated_at: string;
 }
+
+export interface IaddProduct {
+  label: string;
+  type: string;
+  id: keyof IProduct;
+  placeholder: string;
+  validation: {
+    required?: boolean;
+    minLength?: number;
+  };
+}
+
+export interface IProduct {
+  category_id: "1" | "2" | "3" | "4" | "5";
+  type: "pet" | "food" | "Accessories" | "Treatment";
+  title: string;
+  price: string;
+  stock: string;
+}

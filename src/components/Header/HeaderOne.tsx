@@ -79,14 +79,18 @@ function HeaderOne() {
           )}
           {typeNav === "Trader" && (
             <>
-              <Button className="bg-background text-foreground ">
-                <BriefcaseBusiness />
-                My Products
-              </Button>
-              <Button className="bg-background text-foreground ">
-                <Plus />
-                Add Product
-              </Button>
+              <Link to={"myProudct"}>
+                <Button className="bg-background text-foreground ">
+                  <BriefcaseBusiness />
+                  My Products
+                </Button>
+              </Link>
+              <Link to={"addProduct"}>
+                <Button className="bg-background text-foreground ">
+                  <Plus />
+                  Add Product
+                </Button>
+              </Link>
             </>
           )}
           <Link to={"my-booking"}>

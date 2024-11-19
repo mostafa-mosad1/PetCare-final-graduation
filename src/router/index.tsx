@@ -13,6 +13,8 @@ import Services from "@/pages/Services";
 import Shop from "@/pages/Shop";
 import Signup from "@/pages/Signup";
 import Subcategories from "@/pages/Subcategories";
+import AddProduct from "@/pages/Trader/AddProduct";
+import MyProudct from "@/pages/Trader/MyProudct";
 import Vetbooking from "@/pages/Vetbooking";
 
 import {
@@ -47,6 +49,8 @@ const router = createBrowserRouter(
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/my-booking" element={<Mybooking />}></Route>
         <Route path="/vet-booking" element={<Vetbooking />}></Route>
+        <Route path="/addProduct" element={<AddProduct />}></Route>
+        <Route path="/myProudct" element={<MyProudct />}></Route>
       </Route>
 
       {/* 2 */}

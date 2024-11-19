@@ -1,4 +1,5 @@
 import {
+  IaddProduct,
   IFormAddPet,
   IFormAppointments,
   IFormLogin,
@@ -238,5 +239,36 @@ export const RadioGroupPet: IRadioGroupPet[] = [
     id: "r4",
     Label: "Treatment",
     value: "treatment",
+  },
+];
+
+
+export const addProductInputs: IaddProduct[] = [
+  {
+    label: "Title",
+    type: "text",
+    id: "title",
+    placeholder: "Title",
+    validation: {
+      required: true,
+    },
+  },
+  {
+    label: "Price",
+    type: "number",
+    id: "price",
+    placeholder: "Price",
+    validation: {
+      required: true,
+    },
+  },
+  {
+    label: "Stock",
+    type: "number",
+    id: "stock",
+    placeholder: "Stock",
+    validation: {
+      required: true,
+    },
   },
 ];

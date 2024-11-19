@@ -33,7 +33,9 @@ function Services() {
 
   return (
     <>
-      <h2 className="text-4xl text-center font-bold">Check your pet Now!</h2>
+      <h1 className="text-center text-2xl text-foreground font-semibold my-4">
+        Check your pet Now!
+      </h1>
       <div className="py-10 my-4 rounded-md border border-foreground">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="my-2 space-y-2 ps-4 flex items-center justify-between w-1/2 mx-auto">

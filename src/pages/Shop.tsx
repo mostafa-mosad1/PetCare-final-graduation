@@ -35,7 +35,7 @@ function Shop() {
     </div>
   ));
   return (
-    <div className="flex gap-8 justify-center bg-[#112e4ff1] p-4 rounded-md">
+    <div className="flex gap-8 justify-center mb-5 bg-[#112e4ff1] p-4 rounded-md">
       <div className="flex flex-col sticky h-fit top-4 left-0 z-10 space-y-4">
         <h2 className="text-xl leading-5 text-background">Pet Category</h2>
         <div>
