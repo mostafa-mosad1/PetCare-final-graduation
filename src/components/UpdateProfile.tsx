@@ -1,118 +1,3 @@
-<<<<<<< HEAD:src/components/UpdateProfile.tsx
-// import { Button } from "@/components/ui/button";
-// import {
-//   Dialog,
-//   DialogContent,
-//   DialogDescription,
-//   DialogHeader,
-//   DialogTitle,
-//   DialogTrigger,
-// } from "@/components/ui/dialog";
-// import { Pencil } from "lucide-react";
-// import { useAppDispatch } from "@/redux/store";
-// import { useState } from "react";
-// interface IProps {
-//   firstName: string;
-//   lastName: string;
-//   Address: string;
-// }
-// function UpdateProfile({ firstName, lastName, Address }: IProps) {
-//   const dispatch = useAppDispatch();
-
-//   const [oldData,setOldData] = useState({
-//     firstname:firstName,
-//     lastname:lastName,
-//     address:Address
-//   })
-
-//  const OnChangeHandler =(e:React.ChangeEvent<HTMLInputElement>)=>{
-//     e.preventDefault()
-//     const {name,value} = e.target;
-//     setOldData({
-//         ...oldData,
-//         [name] : value
-//     })
-//  }
-//  console.log(oldData)
-//   return (
-//     <div>
-//       <Dialog>
-//         <DialogTrigger asChild>
-//           <Button
-//             className="absolute cursor-pointer top-2 border-none hover:bg-inherit right-4 text-foreground bg-inherit"
-//             variant="outline"
-//           >
-//             <Pencil />
-//           </Button>
-//         </DialogTrigger>
-//         <DialogContent className="sm:max-w-[425px]">
-//           <DialogHeader>
-//             <DialogTitle>Add New Pet</DialogTitle>
-//             <DialogDescription>
-//               Make changes to your profile here. Click save when you're done.
-//             </DialogDescription>
-//           </DialogHeader>
-//           <div className="grid gap-4 py-4">
-//             <form >
-//             <div className="mb-2" >
-//                 <label
-//                   htmlFor="firstname"
-//                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-//                 >
-//                   First Name
-//                 </label>
-//                 <input
-//                 onChange={OnChangeHandler}
-//                   type="text"
-//                   id="firstname"
-//                   value={firstName}
-//                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                 />
-//               </div>
-//               <div className="mb-2" >
-//                 <label
-//                   htmlFor="lastname"
-//                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-//                 >
-//                   Last Name
-//                 </label>
-//                 <input
-//                   type="text"
-//                   value={lastName}
-//                   onChange={OnChangeHandler}
-//                   id="lastname"
-//                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                 />
-//               </div>
-//               <div className="mb-2" >
-//                 <label
-//                   htmlFor="address"
-//                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-//                 >
-//                   Address
-//                 </label>
-//                 <input
-//                   type="text"
-//                   value={Address}
-//                   onChange={OnChangeHandler}
-//                   id="address"
-//                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                 />
-//               </div>
-
-//               <Button type="submit">Update</Button>
-//             </form>
-//           </div>
-//         </DialogContent>
-//       </Dialog>
-//     </div>
-//   );
-// }
-
-// export default UpdateProfile;
-
-=======
->>>>>>> 3d96a64608b36f5481034b08c6169558f6df9be3:src/components/ui/UpdateProfile.tsx
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -193,12 +78,10 @@ function UpdateProfile({ firstName, lastName, Address }: IProps) {
           <div className="grid gap-4 py-4">
             <form onSubmit={handleSubmit(onSubmit)}>
               {UpdateDataInputs}
-
-<<<<<<< HEAD:src/components/UpdateProfile.tsx
-              <Button className="block mx-auto mt-4" type="submit">Update</Button>
-=======
+              <Button className="block mx-auto mt-4" type="submit">
+                Update
+              </Button>
               <Button type="submit">Update</Button>
->>>>>>> 3d96a64608b36f5481034b08c6169558f6df9be3:src/components/ui/UpdateProfile.tsx
             </form>
           </div>
         </DialogContent>

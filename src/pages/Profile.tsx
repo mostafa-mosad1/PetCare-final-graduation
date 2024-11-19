@@ -7,7 +7,7 @@ import {
   useGetPetsUserQuery,
 } from "@/redux/features/Pet/PetSlice";
 import { RootState } from "@/redux/store";
-import { Contact, ImageUp, MapPin, Phone, Trash2, Type } from "lucide-react";
+import { Contact, MapPin, Phone, Trash2, Type } from "lucide-react";
 import { useSelector } from "react-redux";
 
 function Profile() {
@@ -80,7 +80,7 @@ function Profile() {
                   : userProfileData.address
               }
             />
-            <ChangeImage/>
+            <ChangeImage />
           </div>
         </div>
         <div className="flex-1 relative text-4xl p-4 bg-cyan-400">
