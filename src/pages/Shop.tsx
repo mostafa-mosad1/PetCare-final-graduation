@@ -19,11 +19,21 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAddProudctCartMutation } from "@/redux/features/Cart/CartSlice";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { Input } from "@/components/ui/input";
 
 function Shop() {
   const [category, setCategory] = useState<string | null>(null);
   const [type, setType] = useState<string | null>(null);
-  const { data, isLoading } = useGetProudctShopQuery({ category, type });
+  const [search, setSearch] = useState<string | null>(null);
+  const { SearchText } = useSelector((store: RootState) => store.Search);
+  const { data, isLoading } = useGetProudctShopQuery({
+    category,
+    type,
+    search
+  });
+  console.log(SearchText);
   const [addtoCart, { isLoading: loadingCart }] = useAddProudctCartMutation();
   const renderRadioPet = RadioGroupPet.map((el) => (
     <div className="flex items-center space-x-2" key={el.id}>
@@ -102,6 +112,23 @@ function Shop() {
           />
         </div>
 
+
+        <form 
+        className="flex my-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setSearch(e.target.search.value);
+          }}
+        >
+          <Input
+            id="search"
+            type="search"
+            className=" flex-1  me-4 rounded-md bg-background text-foreground outline-none md:w-40 lg:w-96 border-none"
+            placeholder="Title"
+          />
+          <Button className="bg-background text-foreground" type="submit" >Search</Button>
+        </form>
+
         <div>
           {isLoading ? (
             <SkeletonCard />
@@ -133,10 +160,7 @@ function Shop() {
                         <h2 className="font-semibold">{el.title}</h2>
                         <div className="flex justify-between items-center my-2">
                           <h3 className="font-medium">{el.price} EGP</h3>
-                          <h3 className="font-medium">
-                            {" "}
-                            Instock : {el.stock}{" "}
-                          </h3>
+                          <h3 className="font-medium">Instock : {el.stock}</h3>
                         </div>
                       </div>
                     </Link>

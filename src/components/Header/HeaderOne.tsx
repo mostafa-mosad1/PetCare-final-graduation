@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
-  BellRing,
   BriefcaseBusiness,
   LogOut,
   Plus,
@@ -22,11 +21,14 @@ import { useTheme } from "./theme-provider";
 import Cookies from "@/Cookies";
 import { Link } from "react-router-dom";
 import Notification from "../Notification";
+import { useAppDispatch } from '@/redux/store';
+import { getSearch } from "@/redux/features/Shop/SearchSlice";
 
 function HeaderOne() {
   const typeNav = Cookies.get("type");
   const [searchInput, setSearchInput] = useState("");
   const { setTheme } = useTheme();
+ const dispatch = useAppDispatch()
   return (
     <div className="bg-mains   relative z-20 p-2 ">
       <div className="flex md:flex-row flex-col gap-4 items-center md:items-start  container justify-between    ">
@@ -59,14 +61,17 @@ function HeaderOne() {
         >
           <div className="flex space-x-1 bg-background  border overflow-hidden rounded-full">
             <Search className="m-2 " />
-            <Input
+           <form>
+           <Input
               onChange={(e) => {
                 setSearchInput(e.target.value);
+                dispatch(getSearch(e.target.value));
               }}
               type="search"
               className="rounded-none bg-background text-foreground outline-none md:w-40 lg:w-96 border-none"
               placeholder="Title"
-            />
+            /> 
+           </form>
           </div>
         </form>
         <div className="flex gap-4 flex-wrap flex-col md:flex-row">
