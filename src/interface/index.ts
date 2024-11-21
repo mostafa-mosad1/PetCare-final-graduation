@@ -251,3 +251,12 @@ export interface IProduct {
   price: string;
   stock: string;
 }
+ 
+export interface INotification  {
+  id: number,
+  user_id: number,
+  notification: string,
+  type: string,
+  created_at: string,
+  updated_at: string
+}

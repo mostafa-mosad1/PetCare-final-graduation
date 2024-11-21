@@ -21,6 +21,7 @@ import {
 import { useTheme } from "./theme-provider";
 import Cookies from "@/Cookies";
 import { Link } from "react-router-dom";
+import Notification from "../Notification";
 
 function HeaderOne() {
   const typeNav = Cookies.get("type");
@@ -103,9 +104,7 @@ function HeaderOne() {
               <ShoppingCart /> Shopping Cart
             </Button>
           </Link>
-          <Button className="bg-background text-foreground">
-            <BellRing /> Notification
-          </Button>
+        <Notification/>
           <Button className="bg-background text-foreground">
             <LogOut /> LOGOUT
           </Button>

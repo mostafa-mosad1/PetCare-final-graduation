@@ -13,6 +13,8 @@ import toast from "react-hot-toast";
 
 function AddProduct() {
   const [img, setImg] = useState<FileList | null>(null);
+  const [image, setImage] = useState(null);
+
   const [addNewProduct, { isLoading }] = useAddProductShopMutation();
 
   const {
@@ -23,7 +25,18 @@ function AddProduct() {
     resolver: yupResolver(addProudctSchema),
   });
   async function handleChangeimg(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target?.files![0];
+
     await setImg(e.target.files);
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImage(reader.result); 
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImage(null);
+    }
   }
 
   const onSubmit: SubmitHandler<IProduct> = async (data) => {
@@ -76,9 +89,12 @@ function AddProduct() {
         <p className="text-center text-lg text-foreground tracking-widest my-4">
           Please fill out the form below to add a new product to your shop.
         </p>
+        <div className=" border border-foreground rounded-md p-2   items-center flex justify-">
+
+       
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className=" rounded-lg py-4 shadow-lg"
+          className=" rounded-lg  w-3/4  py-4 shadow-lg"
         >
           <div
             className="flex md:items-center md:justify-between flex-col md:flex-row  gap-4  w-3/4 mx-auto
@@ -119,6 +135,7 @@ function AddProduct() {
               className="rounded-md  md:py-2 block bg-background text-foreground "
               id="picture"
               type="file"
+              accept="image/*"
               onChange={(e) => handleChangeimg(e)}
             />
             {!img && <InputError msg="Add Photo Please" />}
@@ -150,6 +167,21 @@ function AddProduct() {
             )}
           </Button>
         </form>
+        <div
+       className=" w-1/4  border-2 border-gray-300 rounded-lg flex justify-center items-center overflow-hidden"
+      >
+        {image ? (
+          <img
+            src={image}
+            alt="Selected"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        ) : (
+          <p className="text-foreground p-4 text-2xl font-bold" >No Image</p>
+        )}
+      </div>
+        </div>
+      
       </div>
     </>
   );

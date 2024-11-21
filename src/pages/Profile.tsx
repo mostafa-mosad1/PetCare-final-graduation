@@ -9,6 +9,7 @@ import {
 import { RootState } from "@/redux/store";
 import { Contact, MapPin, Phone, Trash2, Type } from "lucide-react";
 import { useSelector } from "react-redux";
+import BeatLoader from "react-spinners/esm/BeatLoader";
 
 function Profile() {
   const { profileData } = useSelector((state: RootState) => state.profile);
@@ -95,7 +96,10 @@ function Profile() {
             {data?.pets?.length == 0 ? (
               <p className="text-center text-2xl mx-auto">No Animals </p>
             ) : isLoading ? (
-              <p>loading ...........</p>
+              <div className="flex justify-center m-20 items-center gap-4">
+                <BeatLoader color="#0e305b" size={30} />
+              
+              </div>
             ) : (
               data?.pets?.map((pet: Ipet) => (
                 <div
