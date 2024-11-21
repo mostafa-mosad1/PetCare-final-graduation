@@ -98,9 +98,9 @@ function HeaderOne() {
               <Syringe /> My Booking
             </Button>
           </Link>
-          <Link to={"/shop"}>
+          <Link to={"/cart"}>
             <Button className="bg-background text-foreground">
-              <ShoppingCart /> Shopping Cart
+              <ShoppingCart /> Cart
             </Button>
           </Link>
           <Button className="bg-background text-foreground">

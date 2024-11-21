@@ -69,3 +69,16 @@
 .active {
   @apply text-white font-bold bg-[#112D4E] rounded-lg;
 }
+.left::-webkit-scrollbar {
+  width: 8px;
+}
+
+.left::-webkit-scrollbar-thumb {
+  background-color: #112d4e;
+  border-radius: 10px;
+}
+
+.left::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}

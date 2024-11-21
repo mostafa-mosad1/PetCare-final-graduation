@@ -251,3 +251,14 @@ export interface IProduct {
   price: string;
   stock: string;
 }
+
+export interface IOrder {
+  id: number;
+  user_id: number;
+  product_id: number;
+  quantity: number;
+  created_at: string;
+  updated_at: string;
+  product_name: string;
+  product: IProudctShop;
+}
