@@ -251,6 +251,7 @@ export interface IProduct {
   price: string;
   stock: string;
 }
+<<<<<<< HEAD
  
 export interface INotification  {
   id: number,
@@ -260,3 +261,16 @@ export interface INotification  {
   created_at: string,
   updated_at: string
 }
+=======
+
+export interface IOrder {
+  id: number;
+  user_id: number;
+  product_id: number;
+  quantity: number;
+  created_at: string;
+  updated_at: string;
+  product_name: string;
+  product: IProudctShop;
+}
+>>>>>>> 0b7b8ba0808e07055dd79cd241df5521e656bc8e

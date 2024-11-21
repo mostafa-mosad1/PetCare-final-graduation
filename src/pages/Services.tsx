@@ -34,8 +34,11 @@ function Services() {
   return (
     <>
       <h1 className="text-center text-2xl text-foreground font-semibold my-4">
-        Check your pet Now!
+        Services
       </h1>
+      <p className="text-center text-lg text-foreground tracking-widest my-4">
+        Check your pet Now!{" "}
+      </p>
       <div className="py-10 my-4 rounded-md border border-foreground">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="my-2 space-y-2 ps-4 flex items-center justify-between w-1/2 mx-auto">
@@ -53,10 +56,7 @@ function Services() {
           </div>
           {AllChecks}
 
-          <Button
-            variant={"secondary"}
-            className="mx-auto mt-10 block px-4 py-2 bg-gray-500 rounded-md  text-white"
-          >
+          <Button className="mx-auto mt-10 block px-4 py-2 bg-mains rounded-md  text-white">
             Check
           </Button>
         </form>

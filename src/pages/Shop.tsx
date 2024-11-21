@@ -17,11 +17,14 @@ import { IProudctShop } from "@/interface";
 import SkeletonCard from "@/components/SkeletonCard";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAddProudctCartMutation } from "@/redux/features/Cart/CartSlice";
+import toast from "react-hot-toast";
 
 function Shop() {
   const [category, setCategory] = useState<string | null>(null);
   const [type, setType] = useState<string | null>(null);
   const { data, isLoading } = useGetProudctShopQuery({ category, type });
+  const [addtoCart, { isLoading: loadingCart }] = useAddProudctCartMutation();
   const renderRadioPet = RadioGroupPet.map((el) => (
     <div className="flex items-center space-x-2" key={el.id}>
       <RadioGroupItem
@@ -34,6 +37,23 @@ function Shop() {
       </Label>
     </div>
   ));
+
+  async function handleAddCart(id: number) {
+    try {
+      await addtoCart(String(id));
+      toast.success("Proudct Add Successfully to Cart", {
+        position: "bottom-center",
+        duration: 1500,
+        style: {
+          backgroundColor: "black",
+          color: "white",
+          width: "fit-content",
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div className="flex gap-8 justify-center mb-5 bg-[#112e4ff1] p-4 rounded-md">
       <div className="flex flex-col sticky h-fit top-4 left-0 z-10 space-y-4">
@@ -122,8 +142,11 @@ function Shop() {
                     </Link>
 
                     <div className="flex items-center gap-3">
-                      <Button className="w-full flex justify-center bg-green-500 p-2 text-white font-bold rounded-md translate-y-[200%] group-hover:translate-y-[0%] transition-all duration-500 disabled:bg-green-200">
-                        ADD TO CART
+                      <Button
+                        onClick={() => handleAddCart(el.id)}
+                        className="w-full flex justify-center bg-green-500 p-2 text-white font-bold rounded-md translate-y-[200%] group-hover:translate-y-[0%] transition-all duration-500 disabled:bg-green-200"
+                      >
+                        {loadingCart ? "load" : "Add To Cart"}
                       </Button>
                     </div>
                   </div>

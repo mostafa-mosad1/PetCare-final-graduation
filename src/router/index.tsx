@@ -3,6 +3,7 @@ import CategoreLayout from "@/Layout/CategoreLayout";
 import Layout from "@/Layout/Layout";
 import About from "@/pages/About";
 import Book from "@/pages/Book";
+import Cart from "@/pages/Cart";
 import Doctor from "@/pages/Doctor";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
@@ -51,6 +52,7 @@ const router = createBrowserRouter(
         <Route path="/vet-booking" element={<Vetbooking />}></Route>
         <Route path="/addProduct" element={<AddProduct />}></Route>
         <Route path="/myProudct" element={<MyProudct />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Route>
 
       {/* 2 */}

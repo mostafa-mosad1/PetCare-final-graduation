@@ -9,6 +9,7 @@ import { profileReducer } from "./features/Profile/ProfileSlice";
 import { petsSlice } from "./features/Pet/PetSlice";
 import { shopSlice } from "./features/Shop/ShopSlice";
 import { UpdateProfileSliceReducer } from "./features/UpdateProfileSlice/UpdateProfileSlice";
+import { cartSlice } from "./features/Cart/CartSlice";
 export const store = configureStore({
   reducer: {
     signup: signupReducer,
@@ -20,11 +21,13 @@ export const store = configureStore({
     UpdateProfile: UpdateProfileSliceReducer,
     [petsSlice.reducerPath]: petsSlice.reducer,
     [shopSlice.reducerPath]: shopSlice.reducer,
+    [cartSlice.reducerPath]: cartSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }).concat(
       petsSlice.middleware,
-      shopSlice.middleware
+      shopSlice.middleware,
+      cartSlice.middleware
     ),
 });
 
