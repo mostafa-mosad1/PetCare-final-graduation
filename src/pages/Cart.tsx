@@ -1,13 +1,21 @@
 import { Minus, Plus } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useGetCartQuery } from "@/redux/features/Cart/CartSlice";
+import {
+  useConfirmCartMutation,
+  useDecreaseProductNumberMutation,
+  useGetCartQuery,
+  useIncreaseProductNumberMutation,
+} from "@/redux/features/Cart/CartSlice";
 import { IOrder } from "@/interface";
 import cartEmpty from "../assets/Images/cartEmpty.png";
 import Loader from "@/components/Loader";
 import { Link } from "react-router-dom";
 function Cart() {
   const { data, isLoading } = useGetCartQuery("");
+const [increaseFunction,{data:increaseData}] = useIncreaseProductNumberMutation();
+const [decreaseFunction,{data:decreaseData}] = useDecreaseProductNumberMutation();
+const [confirmFunction,{data:confirmData}] = useConfirmCartMutation();
 
   if (isLoading) return <Loader />;
   const finalPrice = data?.cartItems.reduce(
@@ -19,7 +27,7 @@ function Cart() {
       <div className="md:flex-row flex-col flex justify-between items-center border-b-2 border-foreground py-2">
         <p className="font-normal text-lg capitalize">continue shopping</p>
         <p className="font-normal text-lg capitalize">
-          {data.cartItems.length} Items
+          {data?.cartItems?.length} Items
         </p>
         <p className="font-normal text-lg capitalize">
           need help ? call (+20) 111-222-3333
@@ -27,7 +35,7 @@ function Cart() {
       </div>
       <div className="flex gap-5 my-5 md:flex-row flex-col">
         <div className="flex-1 left overflow-auto max-h-[400px]">
-          {data.cartItems.length === 0 ? (
+          {data?.cartItems?.length === 0 ? (
             <div className="flex flex-col items-center justify-center w-full p-2 mt-4 ">
               <span>Your cart is empty!</span>
               <img
@@ -40,7 +48,7 @@ function Cart() {
           ) : (
             <>
               {" "}
-              {data.cartItems.map((el: IOrder) => (
+              {data?.cartItems?.map((el: IOrder) => (
                 <div
                   className="flex md:justify-between md:items-center border border-foreground p-2 md:flex-row flex-col m-2  "
                   key={el.id}
@@ -58,16 +66,26 @@ function Cart() {
                       <h3 className="underline">{el.product.title} </h3>
                     </Link>
                     <p>Category : {el.product.type}</p>
-                    <p>Price : {el.product.price} EGP</p>
+                    <p>Price : {+el.product.price * el.quantity } EGP</p>
                     <p>Quantity : {el.quantity} </p>
                   </div>
                   <div className="flex flex-col gap-2 cursor-pointer">
-                    <p className="flex justify-center bg-green-500 p-2 rounded-md">
-                      Increase <Plus />
-                    </p>
-                    <p className="flex justify-center bg-red-500 p-2 rounded-md">
-                      Decrease <Minus />
-                    </p>
+                   
+                    <Button  onClick={() => {
+                        increaseFunction({
+                          quantity: +el.quantity + 1,
+                          cart_id: el.id,
+                        });
+                      }}
+                      className="flex justify-center bg-green-500 text-foreground p-2 rounded-md" > Increase <Plus /></Button>
+                    <Button  onClick={() => {
+                        decreaseFunction({
+                          quantity: +el.quantity - 1,
+                          cart_id: el.id,
+                        });
+                      }}
+                      className="flex justify-center text-foreground bg-red-500 p-2 rounded-md" > Decrease <Minus /></Button>
+                   
                   </div>
                 </div>
               ))}
@@ -90,7 +108,7 @@ function Cart() {
               <p>All tax : {finalPrice * 0.05}</p>
               <p>estimated total : {finalPrice * 1.05}</p>
             </div>
-            <Button className="w-full mt-4 text-lg">Check out</Button>
+            <Button onClick={()=>{confirmFunction("")}} className="w-full mt-4 text-lg">Check out</Button>
           </div>
         </div>
       </div>

@@ -18,6 +18,22 @@ function Profile() {
   const parsedData = localStorage.getItem("UserProfileData");
   const userProfileData = parsedData ? JSON.parse(parsedData) : null;
 
+  const calculateDaysLeft = (futureDate: string) => {
+    const today = new Date();
+    const targetDate = new Date(futureDate);
+    const timeDifference = targetDate.getTime() - today.getTime();
+    const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+    return daysLeft > 0 ? (
+      <span className="font-semibold ms-2 text-lg capitalize text-green-500">
+        {daysLeft}
+      </span>
+    ) : (
+      <span className="font-semibold ms-2 text-lg capitalize text-red-600">
+        {daysLeft} Warning
+      </span>
+    );
+  };
+
   return (
     <>
       <div className="flex my-4 flex-col md:flex-row">
@@ -98,13 +114,12 @@ function Profile() {
             ) : isLoading ? (
               <div className="flex justify-center m-20 items-center gap-4">
                 <BeatLoader color="#0e305b" size={30} />
-              
               </div>
             ) : (
               data?.pets?.map((pet: Ipet) => (
                 <div
                   key={pet.id}
-                  className=" overflow-hidden text-center border-2 rounded-md border-blue-200 hover:-translate-y-4 transition-all duration-200  "
+                  className=" overflow-hidden  border-2 rounded-md border-blue-200 hover:-translate-y-4 transition-all duration-200  "
                 >
                   <div className="relative">
                     <Trash2
@@ -126,7 +141,7 @@ function Profile() {
                       Name : {pet.name}
                     </h2>
                     <h2 className="font-semibold text-lg capitalize">
-                      Vaccines : {pet.vaccines}
+                      Remaining Days : {calculateDaysLeft(pet.vaccines)}
                     </h2>
                   </div>
                 </div>

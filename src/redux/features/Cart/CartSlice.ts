@@ -38,7 +38,45 @@ export const cartSlice = createApi({
       }),
       invalidatesTags: [{ type: "cart", id: "LIST" }],
     }),
+    IncreaseProductNumber: builder.mutation({
+      query: (body: { quantity: number; cart_id: number }) => ({
+        url: `/increase-items`,
+        method: "PUT",
+        body,
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+        },
+      }),
+      invalidatesTags: [{ type: "cart", id: "LIST" }],
+    }),
+    DecreaseProductNumber: builder.mutation({
+      query: (body: { quantity: number; cart_id: number }) => ({
+        url: `/decrease-items`,
+        method: "PUT",
+        body,
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+        },
+      }),
+      invalidatesTags: [{ type: "cart", id: "LIST" }],
+    }),
+    ConfirmCart: builder.mutation({
+      query: () => ({
+        url: `/confirm`,
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+        },
+      }),
+      invalidatesTags: [{ type: "cart", id: "LIST" }],
+    }),
   }),
 });
 
-export const { useAddProudctCartMutation, useGetCartQuery } = cartSlice;
+export const {
+  useAddProudctCartMutation,
+  useGetCartQuery,
+  useIncreaseProductNumberMutation,
+  useDecreaseProductNumberMutation,
+  useConfirmCartMutation
+} = cartSlice;

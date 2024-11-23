@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "./theme-provider";
 import Cookies from "@/Cookies";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Notification from "../Notification";
 import { useAppDispatch } from '@/redux/store';
 import { getSearch } from "@/redux/features/Shop/SearchSlice";
@@ -29,6 +29,7 @@ function HeaderOne() {
   const [searchInput, setSearchInput] = useState("");
   const { setTheme } = useTheme();
  const dispatch = useAppDispatch()
+const navgate = useNavigate()
   return (
     <div className="bg-mains   relative z-20 p-2 ">
       <div className="flex md:flex-row flex-col gap-4 items-center md:items-start  container justify-between    ">
@@ -110,7 +111,11 @@ function HeaderOne() {
             </Button>
           </Link>
         <Notification/>
-          <Button className="bg-background text-foreground">
+          <Button onClick={()=>{
+            navgate("/login");
+            Cookies.remove("token")
+            Cookies.remove("type")
+          }} className="bg-background text-foreground">
             <LogOut /> LOGOUT
           </Button>
         </div>

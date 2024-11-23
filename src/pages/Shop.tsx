@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { useGetProudctShopQuery } from "@/redux/features/Shop/ShopSlice";
 import { IProudctShop } from "@/interface";
 import SkeletonCard from "@/components/SkeletonCard";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAddProudctCartMutation } from "@/redux/features/Cart/CartSlice";
 import toast from "react-hot-toast";
@@ -31,9 +31,9 @@ function Shop() {
   const { data, isLoading } = useGetProudctShopQuery({
     category,
     type,
-    search
+    search,
   });
-  console.log(SearchText);
+  // console.log(SearchText);
   const [addtoCart, { isLoading: loadingCart }] = useAddProudctCartMutation();
   const renderRadioPet = RadioGroupPet.map((el) => (
     <div className="flex items-center space-x-2" key={el.id}>
@@ -112,21 +112,27 @@ function Shop() {
           />
         </div>
 
-
-        <form 
-        className="flex my-4"
-          onSubmit={(e) => {
+        <form
+          className="flex my-4"
+          onSubmit={(e: FormEvent<HTMLFormElement>) => {
             e.preventDefault();
-            setSearch(e.target.search.value);
+            const form = e.currentTarget;
+            const input = form.elements.namedItem(
+              "searchInput"
+            ) as HTMLInputElement;
+
+            setSearch(input.value);
           }}
         >
           <Input
-            id="search"
+            id="searchInput"
             type="search"
             className=" flex-1  me-4 rounded-md bg-background text-foreground outline-none md:w-40 lg:w-96 border-none"
             placeholder="Title"
           />
-          <Button className="bg-background text-foreground" type="submit" >Search</Button>
+          <Button className="bg-background text-foreground" type="submit">
+            Search
+          </Button>
         </form>
 
         <div>
