@@ -9,7 +9,7 @@ export const shopSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://127.0.0.1:8000/api" }),
   endpoints: (builder) => ({
     getProudctShop: builder.query({
-      query: ({ category, type, search }) => {
+      query: ({ category, type }) => {
         let allApi = "/products";
 
         if (category) {
@@ -18,9 +18,7 @@ export const shopSlice = createApi({
         if (type) {
           allApi += `${category ? "&" : "?"}type=${type}`;
         }
-        if (search) {
-          allApi += `?search=${search}`;
-        }
+
         return { url: allApi };
       },
       providesTags: (result) =>

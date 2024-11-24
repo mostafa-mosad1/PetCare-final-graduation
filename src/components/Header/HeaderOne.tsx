@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -7,10 +8,10 @@ import {
   Search,
   ShoppingCart,
   Syringe,
+  Menu,
+  X,
 } from "lucide-react";
-import { useState } from "react";
 import { Moon, Sun } from "lucide-react";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,18 +22,34 @@ import { useTheme } from "./theme-provider";
 import Cookies from "@/Cookies";
 import { Link, useNavigate } from "react-router-dom";
 import Notification from "../Notification";
-import { useAppDispatch } from '@/redux/store';
-import { getSearch } from "@/redux/features/Shop/SearchSlice";
 
 function HeaderOne() {
+  const [showMenu, setShowMenu] = useState(false);
   const typeNav = Cookies.get("type");
-  const [searchInput, setSearchInput] = useState("");
   const { setTheme } = useTheme();
- const dispatch = useAppDispatch()
-const navgate = useNavigate()
+  const navigate = useNavigate();
+
+  const handleLinkClick = () => {
+    setShowMenu(false);
+  };
+
   return (
-    <div className="bg-mains   relative z-20 p-2 ">
-      <div className="flex md:flex-row flex-col gap-4 items-center md:items-start  container justify-between    ">
+    <div className="bg-mains relative z-20 p-2">
+      <div className="flex md:flex-row flex-col gap-4 items-center md:items-start container justify-between">
+        <div className="md:hidden flex items-center">
+          <Button
+            onClick={() => setShowMenu(!showMenu)}
+            variant="outline"
+            size="icon"
+          >
+            {showMenu ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </Button>
+        </div>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon">
@@ -53,32 +70,20 @@ const navgate = useNavigate()
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log(searchInput);
-          }}
-          action=""
-        >
-          <div className="flex space-x-1 bg-background  border overflow-hidden rounded-full">
-            <Search className="m-2 " />
-           <form>
-           <Input
-              onChange={(e) => {
-                setSearchInput(e.target.value);
-                dispatch(getSearch(e.target.value));
-              }}
-              type="search"
-              className="rounded-none bg-background text-foreground outline-none md:w-40 lg:w-96 border-none"
-              placeholder="Title"
-            /> 
-           </form>
-          </div>
-        </form>
-        <div className="flex gap-4 flex-wrap flex-col md:flex-row">
+
+        <div className="flex space-x-1 bg-background border overflow-hidden rounded-full">
+          <Search className="m-2" />
+          <Input
+            type="search"
+            className="rounded-none bg-background text-foreground outline-none md:w-40 lg:w-96 border-none"
+            placeholder="Title"
+          />
+        </div>
+
+        <div className="hidden md:flex gap-4 flex-wrap flex-col md:flex-row">
           {typeNav === "Vet" && (
-            <Link to={"vet-booking"}>
-              <Button className="bg-background text-foreground ">
+            <Link to={"vet-booking"} onClick={handleLinkClick}>
+              <Button className="bg-background text-foreground">
                 <Syringe />
                 VET Booking
               </Button>
@@ -86,40 +91,99 @@ const navgate = useNavigate()
           )}
           {typeNav === "Trader" && (
             <>
-              <Link to={"myProudct"}>
-                <Button className="bg-background text-foreground ">
+              <Link to={"myProudct"} onClick={handleLinkClick}>
+                <Button className="bg-background text-foreground">
                   <BriefcaseBusiness />
                   My Products
                 </Button>
               </Link>
-              <Link to={"addProduct"}>
-                <Button className="bg-background text-foreground ">
+              <Link to={"addProduct"} onClick={handleLinkClick}>
+                <Button className="bg-background text-foreground">
                   <Plus />
                   Add Product
                 </Button>
               </Link>
             </>
           )}
-          <Link to={"my-booking"}>
-            <Button className="bg-background text-foreground ">
+          <Link to={"my-booking"} onClick={handleLinkClick}>
+            <Button className="bg-background text-foreground">
               <Syringe /> My Booking
             </Button>
           </Link>
-          <Link to={"/cart"}>
+          <Link to={"/cart"} onClick={handleLinkClick}>
             <Button className="bg-background text-foreground">
               <ShoppingCart /> Cart
             </Button>
           </Link>
-        <Notification/>
-          <Button onClick={()=>{
-            navgate("/login");
-            Cookies.remove("token")
-            Cookies.remove("type")
-          }} className="bg-background text-foreground">
+
+          <Notification />
+
+          <Button
+            onClick={() => {
+              navigate("/login");
+              Cookies.remove("token");
+              Cookies.remove("type");
+            }}
+            className="bg-background text-foreground"
+          >
             <LogOut /> LOGOUT
           </Button>
         </div>
       </div>
+
+      {showMenu && (
+        <div className="md:hidden absolute top-0 left-0 w-full bg-background z-10 p-4">
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl font-bold text-[#269A41]">PetLife</h1>
+            <Button onClick={() => setShowMenu(false)} variant="link">
+              <X className="h-6 w-6" />
+            </Button>
+          </div>
+          <ul className="flex flex-col items-center gap-4 mt-5 text-lg font-medium">
+            {typeNav === "Vet" && (
+              <Link to={"vet-booking"} onClick={handleLinkClick}>
+                <Button className="bg-background text-foreground w-full py-2">
+                  VET Booking
+                </Button>
+              </Link>
+            )}
+            {typeNav === "Trader" && (
+              <>
+                <Link to={"myProudct"} onClick={handleLinkClick}>
+                  <Button className="bg-background text-foreground w-full py-2">
+                    My Products
+                  </Button>
+                </Link>
+                <Link to={"addProduct"} onClick={handleLinkClick}>
+                  <Button className="bg-background text-foreground w-full py-2">
+                    Add Product
+                  </Button>
+                </Link>
+              </>
+            )}
+            <Link to={"my-booking"} onClick={handleLinkClick}>
+              <Button className="bg-background text-foreground w-full py-2">
+                My Booking
+              </Button>
+            </Link>
+            <Link to={"/cart"} onClick={handleLinkClick}>
+              <Button className="bg-background text-foreground w-full py-2">
+                Cart
+              </Button>
+            </Link>
+            <Button
+              onClick={() => {
+                navigate("/login");
+                Cookies.remove("token");
+                Cookies.remove("type");
+              }}
+              className="bg-background text-foreground  py-2"
+            >
+              LOGOUT
+            </Button>
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

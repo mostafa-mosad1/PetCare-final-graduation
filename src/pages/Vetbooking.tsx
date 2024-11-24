@@ -25,7 +25,6 @@ function Vetbooking() {
   });
   if (isLoading) return <Loader />;
   async function approveBook(id: number) {
-    console.log(id);
     try {
       const res = await axios.put(
         "http://127.0.0.1:8000/api/approve-booking",
@@ -74,9 +73,9 @@ function Vetbooking() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.booking.length === 0 ? (
+          {data?.booking.length === 0 ? (
             <TableRow>
-              <TableCell className="font-medium">No</TableCell>
+              <TableCell className="font-medium">No Booking Yet</TableCell>
             </TableRow>
           ) : (
             data?.booking?.map((book: IVetBooking, idx: number) => (

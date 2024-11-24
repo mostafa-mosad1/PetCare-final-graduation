@@ -117,22 +117,27 @@ export const FormLogin: IFormLogin[] = [
 export const CheckInputs: {
   label: string;
   type: "temprature" | "voming" | "lack_of_appetite" | "urinating";
+  id: string;
 }[] = [
   {
     label: "High temperatue?",
     type: "temprature",
+    id: "temprature",
   },
   {
     label: "Voming?",
     type: "voming",
+    id: "voming",
   },
   {
     label: "Lack of appetite?",
     type: "lack_of_appetite",
+    id: "lack_of_appetite",
   },
   {
     label: "Urinating?",
     type: "urinating",
+    id: "urinating",
   },
 ];
 
@@ -169,7 +174,7 @@ export const FormAppointments: IFormAppointments[] = [
 
 export const AddFormPet: IFormAddPet[] = [
   {
-    label: "Firs Name",
+    label: "First Name",
     type: "text",
     id: "name",
     placeholder: "Enter Pet Name",
@@ -241,7 +246,6 @@ export const RadioGroupPet: IRadioGroupPet[] = [
     value: "treatment",
   },
 ];
-
 
 export const addProductInputs: IaddProduct[] = [
   {

@@ -44,7 +44,7 @@ function Mybooking() {
         <TableBody>
           {data?.booking.length === 0 ? (
             <TableRow>
-              <TableCell className="font-medium">No</TableCell>
+              <TableCell className="font-medium">No Booking Yet</TableCell>
             </TableRow>
           ) : (
             data?.booking?.map((book: IBookingVet, idx: number) => (

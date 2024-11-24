@@ -26,7 +26,6 @@ function Addpet({ userId }: IProps) {
   async function handleChangeimg(e: ChangeEvent<HTMLInputElement>) {
     await setImg(e.target.files);
   }
-  console.log(userId);
   const {
     register,
     handleSubmit,
@@ -69,7 +68,12 @@ function Addpet({ userId }: IProps) {
     <div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button className="bg-mains/80 text-white hover:bg-mains" variant="outline">Add Pet</Button>
+          <Button
+            className="bg-mains/80 text-white hover:bg-mains"
+            variant="outline"
+          >
+            Add Pet
+          </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div className=" bg-mains">
-      <div className="flex justify-between container     pt-6 pb-2 rounded-md  space-x-4 ">
+      <div className="flex md:justify-between container md:flex-row flex-col  pt-6 pb-2  gap-4   ">
         <div className="flex-1">
           <h2 className="text-4xl font-semibold">Pet Care</h2>
           <p className="w-[4%] h-1 bg-foreground my-2"></p>

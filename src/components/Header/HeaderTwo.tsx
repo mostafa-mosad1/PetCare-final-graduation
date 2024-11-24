@@ -18,11 +18,11 @@ function HeaderTwo() {
       <h1 className="lg:text-3xl text-lg font-bold text-[#269A41]">PetLife</h1>
       <ul className="hidden md:flex justify-end  gap-5 font-medium flex-1">
         <NavLink to="/">
-          <li className="py-1 lg:text-lg lg:px-2 px-1 ">HOME</li>
+          <li className="py-1 lg:text-lg lg:px-2 px-1 ">Home</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
         <NavLink to={"/shop"}>
-          <li className="py-1 lg:text-lg lg:px-2 px-1 ">SHOP</li>
+          <li className="py-1 lg:text-lg lg:px-2 px-1 ">Shop</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
         <NavLink to={"/categories"}>
@@ -70,10 +70,10 @@ function HeaderTwo() {
               <p className="px-4 py-2 rounded inline-block">Home</p>
             </NavLink>
             <NavLink onClick={() => setShoweMenu(false)} to="/shop">
-              <p className="px-4 py-2 rounded inline-block">SHOP</p>
+              <p className="px-4 py-2 rounded inline-block">Shop</p>
             </NavLink>
             <NavLink onClick={() => setShoweMenu(false)} to="/categories">
-              <p className="px-4 py-2 rounded inline-block">Category</p>
+              <p className="px-4 py-2 rounded inline-block ">Category</p>
             </NavLink>
             <NavLink onClick={() => setShoweMenu(false)} to="/doctor">
               <p className="px-4 py-2 rounded inline-block">Doctor</p>

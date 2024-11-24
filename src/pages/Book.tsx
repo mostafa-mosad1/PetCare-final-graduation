@@ -10,7 +10,7 @@ function Book() {
   return (
     <div>
       <div className="flex gap-4 md:flex-row flex-col items-center md:items-start ">
-        <div className="" key={id}>
+        <div key={id}>
           <img
             src={`http://127.0.0.1:8000/assets/images/${doctorDetails?.img}`}
             className=" object-cover max-w-72 h-56 rounded-md"

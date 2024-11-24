@@ -13,7 +13,7 @@ import Cookies from "@/Cookies";
 import { INotification } from "@/interface";
 
 function Notification() {
-  const { isLoading, data, } = useGetHook({
+  const { data } = useGetHook({
     queryKey: ["Notification"],
     url: "http://127.0.0.1:8000/api/notifications",
     config: {
@@ -22,29 +22,36 @@ function Notification() {
       },
     },
   });
-  const allNotifications = data?.notifications.map((item:INotification,index:number)=>{
- return   <div key={item.id}>
-        <p className=" hover:bg-foreground hover:text-black hover:font-bold hover:text-xl text-foreground border-foreground border-2 my-4 p-2 rounded-md capitalize " >{index+1} - {item.notification}</p>
-    </div>
-  })
+  const allNotifications = data?.notifications.map(
+    (item: INotification, index: number) => {
+      return (
+        <div key={item.id}>
+          <p className=" hover:bg-foreground hover:text-black hover:font-bold hover:text-xl text-foreground border-foreground border-2 my-4 p-2 rounded-md capitalize ">
+            {index + 1} - {item.notification}
+          </p>
+        </div>
+      );
+    }
+  );
   return (
     <>
       <Dialog>
-        <DialogTrigger>
-          <Button className="bg-background  text-foreground">
+        <DialogTrigger asChild>
+          <Button className="bg-background text-foreground">
             <BellRing /> Notification
           </Button>
         </DialogTrigger>
-        <DialogContent >
+        <DialogContent>
           <DialogHeader>
-            <DialogTitle className="text-center my-4" >Notifications</DialogTitle>
-            <DialogDescription >
-             {data?.notifications.length !=0? 
-             
-             allNotifications:<p>No Notifications</p>}
-             
-            
-             
+            <DialogTitle className="text-center my-4">
+              Notifications
+            </DialogTitle>
+            <DialogDescription>
+              {data?.notifications.length !== 0 ? (
+                allNotifications
+              ) : (
+                <span>No Notifications</span>
+              )}
             </DialogDescription>
           </DialogHeader>
         </DialogContent>

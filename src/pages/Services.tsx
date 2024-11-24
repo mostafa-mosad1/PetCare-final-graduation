@@ -20,8 +20,9 @@ function Services() {
       key={index}
       className="my-2 space-y-2 ps-4 flex items-center justify-between w-1/2 mx-auto"
     >
-      <label>{curInput.label}</label>
+      <label htmlFor={curInput.id}>{curInput.label}</label>
       <select
+        id={curInput.id}
         className="bg-background text-foreground p-1 rounded-md w-1/2"
         {...register(`${curInput.type}`)}
       >
