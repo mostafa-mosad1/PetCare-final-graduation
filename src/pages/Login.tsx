@@ -87,7 +87,7 @@ function Login() {
               </Link>
             </p>
           </div>
-         <div className="absolute ">
+         <div className="absolute">
          <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon">
